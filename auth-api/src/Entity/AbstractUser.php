@@ -16,11 +16,12 @@ use JMS\Serializer\Annotation as JMS;
 /**
  * Class User
  *
- * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\AbstractUserRepository")
  * @ORM\Table(name="users")
  * @ORM\InheritanceType(value="SINGLE_TABLE")
  *
  * @JMS\ExclusionPolicy("ALL")
+ * @JMS\Discriminator(disabled=true)
  */
 class AbstractUser
 {
@@ -56,19 +57,32 @@ class AbstractUser
     /**
      * @var string
      *
-     * @ORM\Column(nullable=true)
-     */
-    protected $user_key;
-
-    /**
-     * @var string
-     *
      * @ORM\Column(type="datetime_immutable")
      *
      * @JMS\Expose()
      * @JMS\Groups(groups={"all"})
      */
     protected $createdAt;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column()
+     *
+     * @JMS\Expose()
+     * @JMS\Groups(groups={"all"})
+     */
+    protected $email;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column()
+     *
+     * @JMS\Expose()
+     * @JMS\Groups(groups={"all"})
+     */
+    protected $phone;
 
     /**
      * AbstractUser constructor.
@@ -147,4 +161,60 @@ class AbstractUser
         $this->name = $name;
         return $this;
     }
+
+    /**
+     * @return string
+     */
+    public function getCreatedAt(): string
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * @param string $createdAt
+     * @return AbstractUser
+     */
+    public function setCreatedAt(string $createdAt): AbstractUser
+    {
+        $this->createdAt = $createdAt;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getEmail(): string
+    {
+        return $this->email;
+    }
+
+    /**
+     * @param string $email
+     * @return AbstractUser
+     */
+    public function setEmail(string $email): AbstractUser
+    {
+        $this->email = $email;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPhone(): string
+    {
+        return $this->phone;
+    }
+
+    /**
+     * @param string $phone
+     * @return AbstractUser
+     */
+    public function setPhone(string $phone): AbstractUser
+    {
+        $this->phone = $phone;
+        return $this;
+    }
+
+
 }

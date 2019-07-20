@@ -11,30 +11,51 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use JMS\Serializer\Annotation as JMS;
 
 /**
  * Class User
  *
- * @ORM\Entity()
+ * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
+ *
+ * @JMS\ExclusionPolicy("ALL")
  */
 class User extends AbstractUser
 {
     /**
      * @var string
      *
-     * @ORM\Column()
+     * @ORM\Column(nullable=true)
      */
-    protected $email;
+    protected $userKey;
 
     /**
      * @var string
      *
-     * @ORM\Column()
-     */
-    protected $phone;
-
-    /**
-     * @var string
+     * @JMS\Expose()
+     * @JMS\Groups(groups={"all"})
      */
     protected $address;
+
+    /**
+     * User constructor.
+     *
+     * @param string $name
+     *
+     * @throws \Exception
+     */
+    public function __construct(string $name)
+    {
+        parent::__construct($name);
+    }
+
+
+    public function createKey()
+    {
+        $parts = [];
+        for ($i = 0; $i<4; $i++) {
+            $parts []= bin2hex(openssl_random_pseudo_bytes(2));
+        }
+        $this->userKey = implode('-', $parts);
+    }
 }

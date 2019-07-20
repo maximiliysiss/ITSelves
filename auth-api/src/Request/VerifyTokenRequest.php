@@ -11,12 +11,13 @@
 namespace App\Request;
 
 
+use Fesor\RequestObject\PayloadResolver;
 use Fesor\RequestObject\RequestObject;
 use Swagger\Annotations as SWG;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Validator\Constraints as Assert;
 
-class VerifyTokenRequest extends RequestObject
+class VerifyTokenRequest extends RequestObject implements PayloadResolver
 {
     /**
      * @var string

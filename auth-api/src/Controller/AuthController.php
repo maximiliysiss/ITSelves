@@ -76,6 +76,7 @@ class AuthController extends AbstractController
 
         /** @var User $user */
         $user = new User($name);
+        $user->createKey();
 
         $em = $this->getDoctrine()->getManager();
         $em->persist($user);
@@ -116,11 +117,11 @@ class AuthController extends AbstractController
 
         /** @var AbstractUser $user */
         $user = $this->getUserRepository()->findOneBy([
-            'key' => $key,
+            'userKey' => $key,
         ]);
 
         if (empty($user)) {
-            throw new BadCredentialsException();
+            throw new BadCredentialsException("Неверный ключ");
         }
 
         $user->createToken();
@@ -163,19 +164,41 @@ class AuthController extends AbstractController
         $token = $request->get('token');
 
         /** @var AbstractUser $user */
-        $user = $this->getUserRepository()->findOneBy([
+        $user = $this->getAbstractUserRepository()->findOneBy([
             'token' => $token,
         ]);
 
         if (empty($user)) {
-            throw new BadCredentialsException();
+            throw new BadCredentialsException("Неверный токен");
         }
 
         return JsonResponse::fromJsonString(
             $this->serializer->serialize(
-                new TokenResponse($user->getToken()), 'json'
+                $user, 'json'
             )
         );
+    }
+
+    /**
+     * @Route("/")
+     *
+     * @return JsonResponse
+     */
+    public function tAction()
+    {
+        return JsonResponse::fromJsonString(
+            $this->serializer->serialize(
+                $this->getAbstractUserRepository()->findAll(), 'json'
+            )
+        );
+    }
+
+    /**
+     * @return \App\Repository\AbstractUserRepository|\Doctrine\Common\Persistence\ObjectRepository
+     */
+    private function getAbstractUserRepository()
+    {
+        return $this->getDoctrine()->getRepository(AbstractUser::class);
     }
 
     /**
@@ -183,6 +206,6 @@ class AuthController extends AbstractController
      */
     private function getUserRepository()
     {
-        return $this->getDoctrine()->getRepository(AbstractUser::class);
+        return $this->getDoctrine()->getRepository(User::class);
     }
 }
