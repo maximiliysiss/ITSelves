@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -48,35 +49,21 @@ public class OpenTaskFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(LAYOUT, container, false);
-        //TODO получить список заявок
-        ApiWorker awt = new ApiWorker("http://85.143.11.233:8000/");
-
-        IAuthApi taskApi = awt.getLog();
-        taskApi.getTask(Singleton.getInstance().getToken()).enqueue(new Callback<List<Task>>()
-        {
-
-            @Override
-            public void onResponse(Call<List<Task>> call, Response<List<Task>> response)
-            {
-                if(!response.isSuccessful())
-                {
-                    System.out.println("We got some troubles. But server is okay");
-                    return;
+        try {
+            ListView lv = (ListView) view.findViewById(R.id.taskList);
+            ArrayList<Task> taskList = (ArrayList<Task>) Singleton.getInstance().getTaskList();
+            for (int i = 0; i < taskList.size(); i++) {
+                Task temp = taskList.get(i);
+                if (temp.getTaskStatus() != 0 || temp.getTaskStatus() != 1) {
+                    taskList.remove(i);
                 }
-                response.body(); //Вот лист тасков, тащи отсюда
             }
-
-            @Override
-            public void onFailure(Call<List<Task>> call, Throwable t)
-            {
-                System.out.println(t.getMessage());
-            }
-
-        });
-
-
-        ListView lv = (ListView) view.findViewById(R.id.taskList);
-
+            ListTaskAdapter adapter = new ListTaskAdapter(view.getContext(), R.layout.item_event, taskList);
+            lv.setAdapter(adapter);
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
         return view;
     }
 }

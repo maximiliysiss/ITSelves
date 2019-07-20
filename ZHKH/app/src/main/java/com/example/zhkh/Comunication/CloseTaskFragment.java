@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 
 import com.example.zhkh.ApiInteractions.ApiWorker;
+import com.example.zhkh.ApiInteractions.Singleton;
 import com.example.zhkh.ApiInteractions.pojoes.Task;
 import com.example.zhkh.R;
 
@@ -38,19 +39,21 @@ public class CloseTaskFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(LAYOUT, container, false);
-        //TODO получить список заявок
-//        ApiWorker awt = new ApiWorker("http://85.143.11.233:8000/");
-//        awt.GettingTasks();
-//        ListView lv = (ListView) view.findViewById(R.id.taskList);
-//        ArrayList<Task> taskList = (ArrayList<Task>) awt.getTaskResult();
-//        for(int i = 0; i<taskList.size(); i++){
-//            Task temp = taskList.get(i);
-//            if(temp.getTaskStatus()==0 || temp.getTaskStatus()==1){
-//                taskList.remove(i);
-//            }
-//        }
-//        ListTaskAdapter adapter = new ListTaskAdapter(view.getContext(), R.layout.item_event, taskList);
-//        lv.setAdapter(adapter);
+        try {
+            ListView lv = (ListView) view.findViewById(R.id.taskList);
+            ArrayList<Task> taskList = (ArrayList<Task>) Singleton.getInstance().getTaskList();
+            for (int i = 0; i < taskList.size(); i++) {
+                Task temp = taskList.get(i);
+                if (temp.getTaskStatus() == 0 || temp.getTaskStatus() == 1) {
+                    taskList.remove(i);
+                }
+            }
+            ListTaskAdapter adapter = new ListTaskAdapter(view.getContext(), R.layout.item_event, taskList);
+            lv.setAdapter(adapter);
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
         return view;
     }
 }
