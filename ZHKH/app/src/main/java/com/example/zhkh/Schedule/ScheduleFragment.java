@@ -1,5 +1,6 @@
-package com.example.zhkh.Fragments;
+package com.example.zhkh.Schedule;
 
+import android.app.usage.UsageEvents;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
@@ -8,19 +9,22 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.zhkh.Fragments.addCounterIndoFragment;
 import com.example.zhkh.R;
-import com.example.zhkh.Schedule.ScheduleFragment;
+import com.skyhope.eventcalenderlibrary.CalenderEvent;
 
-public class ProfileFragment extends Fragment {
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 
+public class ScheduleFragment extends Fragment {
     private OnFragmentInteractionListener mListener;
-
-    public ProfileFragment() {
+    public ScheduleFragment() {
         // Required empty public constructor
     }
-
-    public static ProfileFragment newInstance(String param1, String param2) {
-        ProfileFragment fragment = new ProfileFragment();
+    public static ScheduleFragment newInstance(String param1, String param2) {
+        ScheduleFragment fragment = new ScheduleFragment();
         Bundle args = new Bundle();
         fragment.setArguments(args);
         return fragment;
@@ -29,35 +33,27 @@ public class ProfileFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-        }
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_profile, container, false);
+        View view = inflater.inflate(R.layout.fragment_schedule, container, false);
+        CalenderEvent calenderEvent = view.findViewById(R.id.calender_event);
+        return view;
     }
-
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
             mListener.onFragmentInteraction(uri);
         }
     }
-
     public interface OnFragmentInteractionListener {
         void onFragmentInteraction(Uri uri);
     }
+
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
     }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        mListener = null;
-    }
-
 }
