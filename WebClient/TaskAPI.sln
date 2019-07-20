@@ -3,13 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.329
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebClient", "WebClient\WebClient.csproj", "{DDE16558-1AC2-483D-A290-37CD0458FEF0}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskAPI", "TaskAPI\TaskAPI.csproj", "{B72E84A1-2824-4BF3-8D6A-93A7A06D32C2}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HCSApi", "HCSApi\HCSApi.csproj", "{D8516BEE-100E-47C6-97B3-70A9808F5E95}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommonActions", "CommonActions\CommonActions.csproj", "{60BCB452-108B-4D91-AD79-A06C00306402}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
