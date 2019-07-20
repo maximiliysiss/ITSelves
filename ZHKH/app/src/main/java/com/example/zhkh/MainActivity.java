@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
 
     NavController navController;
 
+
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
         @Override
