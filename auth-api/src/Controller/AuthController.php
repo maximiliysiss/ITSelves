@@ -117,7 +117,7 @@ class AuthController extends AbstractController
         $key = $request->get('key');
 
         /** @var AbstractUser $user */
-        $user = $this->getUserRepository()->findOneBy([
+        $user = $this->getAbstractUserRepository()->findOneBy([
             'userKey' => $key,
         ]);
 

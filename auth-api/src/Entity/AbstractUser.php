@@ -93,6 +93,13 @@ abstract class AbstractUser implements UserInterface
     protected $phone;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(nullable=true)
+     */
+    protected $userKey;
+
+    /**
      * AbstractUser constructor.
      *
      * @param string $name
@@ -280,8 +287,7 @@ abstract class AbstractUser implements UserInterface
 
     public function getRoles()
     {
-        // do nothing
-        return [];
+        return [$this->getRole()];
     }
 
     public function getSalt()

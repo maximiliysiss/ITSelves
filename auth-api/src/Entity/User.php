@@ -27,13 +27,6 @@ class User extends AbstractUser
     /**
      * @var string
      *
-     * @ORM\Column(nullable=true)
-     */
-    protected $userKey;
-
-    /**
-     * @var string
-     *
      * @JMS\Expose()
      * @JMS\Groups(groups={"all"})
      */
