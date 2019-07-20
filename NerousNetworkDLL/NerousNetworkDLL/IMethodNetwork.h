@@ -23,7 +23,7 @@ namespace NerousNetworkDLL::Methods
 	};
 
 	class MORMethod : public IMethodNetwork {
-		std::map<NerousNetworkDLL::Nerons::Neron*, double> previousDeltas;
+		std::map<NerousNetworkDLL::Nerons::Neron*, float> previousDeltas;
 		void MORCalculate(NerousNetworkDLL::Nerons::Neron* neron);
 	public:
 		virtual void operator()(NerousNetwork * ns) override;

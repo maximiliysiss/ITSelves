@@ -24,24 +24,24 @@ namespace NerousNetworkDLL::Nerons
 		output = activeFunction->Activate(input);
 	}
 
-	void Neron::createSynaps(Neron * from, double weight)
+	void Neron::createSynaps(Neron * from, float weight)
 	{
 		Synaps * synaps = new Synaps(weight);
 		inputNerons[from] = synaps;
 		from->outputNerons[this] = synaps;
 	}
 
-	Synaps::Synaps(double weight)
+	Synaps::Synaps(float weight)
 		:weight(weight)
 	{
 	}
-	InputNeron::InputNeron(ActivationPack * activationPack, double value)
+	InputNeron::InputNeron(ActivationPack * activationPack, float value)
 		: Neron(activationPack, NeronType::INPUT)
 	{
 		output = input = value;
 	}
 
-	OutputNeronWithTeacher::OutputNeronWithTeacher(ActivationPack * activation, double ideal)
+	OutputNeronWithTeacher::OutputNeronWithTeacher(ActivationPack * activation, float ideal)
 		: OutputNeron(activation), ideal(ideal)
 	{
 	}

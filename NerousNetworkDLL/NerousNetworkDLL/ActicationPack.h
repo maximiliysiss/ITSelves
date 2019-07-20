@@ -13,30 +13,29 @@ namespace NerousNetworkDLL
 	{
 	public:
 		ActivationPack();
-		virtual double Activate(double input) = 0;
-		virtual double DefActivate(double input) = 0;
-		virtual double Delta(Nerons::Neron * neron) = 0;
+		virtual float Activate(float input) = 0;
+		virtual float DefActivate(float input) = 0;
+		virtual float Delta(Nerons::Neron * neron) = 0;
 		virtual void MOR(Nerons::Neron * neron) = 0;
 		virtual ~ActivationPack();
 	};
 
 	class SigmoidActivation : public ActivationPack {
 	private:
-		double delta;
-		double preDelta{ 0 };
+		float delta;
+		float preDelta{ 0 };
 	public:
-		inline void setDelta(double delta) { this->delta = delta; }
-		inline double getDelta() const { return this->delta; }
-		// Inherited via ActivationPack
-		virtual double Activate(double input) override;
-		virtual double DefActivate(double input) override;
-		virtual double Delta(Nerons::Neron * neron) override;
+		inline void setDelta(float delta) { this->delta = delta; }
+		inline float getDelta() const { return this->delta; }
+		virtual float Activate(float input) override;
+		virtual float DefActivate(float input) override;
+		virtual float Delta(Nerons::Neron * neron) override;
 		virtual void MOR(Nerons::Neron * neron) override;
 	};
 
 	class SigmoidOutputActivation : public SigmoidActivation {
 	public:
-		virtual double Delta(Nerons::Neron* neron) override;
+		virtual float Delta(Nerons::Neron* neron) override;
 		virtual void MOR(Nerons::Neron * neron) override;
 	};
 }

@@ -8,25 +8,25 @@ NerousNetworkDLL::ActivationPack::~ActivationPack()
 {
 }
 
-double NerousNetworkDLL::SigmoidActivation::Activate(double input)
+float NerousNetworkDLL::SigmoidActivation::Activate(float input)
 {
 	return 1 / (1 + exp(-input));
 }
 
-double NerousNetworkDLL::SigmoidActivation::DefActivate(double input)
+float NerousNetworkDLL::SigmoidActivation::DefActivate(float input)
 {
 	return (1 - input)*input;
 }
 
-double NerousNetworkDLL::SigmoidActivation::Delta(Nerons::Neron * neron)
+float NerousNetworkDLL::SigmoidActivation::Delta(Nerons::Neron * neron)
 {
-	double res = 0;
+	float res = 0;
 	for (auto n : neron->getOutputNerons()) {
 		ActivationPack * act = n.first->getActivationPack();
 		res += n.second->weight*act->Delta(n.first);
 	}
 	((SigmoidActivation*)neron->getActivationPack())->setDelta(res * this->DefActivate(neron->getOutput()));
-	return ((SigmoidActivation*)neron)->getDelta();
+	return ((SigmoidActivation*)neron->getActivationPack())->getDelta();
 }
 
 void NerousNetworkDLL::SigmoidActivation::MOR(Nerons::Neron * neron)
@@ -40,11 +40,11 @@ void NerousNetworkDLL::SigmoidActivation::MOR(Nerons::Neron * neron)
 	}
 }
 
-double NerousNetworkDLL::SigmoidOutputActivation::Delta(Nerons::Neron * neron)
+float NerousNetworkDLL::SigmoidOutputActivation::Delta(Nerons::Neron * neron)
 {
 	Nerons::OutputNeronWithTeacher * output = (Nerons::OutputNeronWithTeacher*)neron;
 	((SigmoidActivation*)neron->getActivationPack())->setDelta((output->getError())*this->DefActivate(output->getOutput()));
-	return ((SigmoidActivation*)neron)->getDelta();
+	return ((SigmoidActivation*)neron->getActivationPack())->getDelta();
 }
 
 void NerousNetworkDLL::SigmoidOutputActivation::MOR(Nerons::Neron * neron)

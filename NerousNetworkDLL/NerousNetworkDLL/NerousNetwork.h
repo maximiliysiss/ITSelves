@@ -2,6 +2,7 @@
 #include <vector>
 #include "Nerons.h"
 #include "IMethodNetwork.h"
+#include <numeric>
 
 namespace NerousNetworkDLL::Methods
 {
@@ -31,10 +32,12 @@ namespace NerousNetworkDLL
 		inline auto getHiddens() const { return hiddenNerons; }
 		void calculate();
 		void calculateMethod();
-		void setInput(std::vector<double> data);
-		static double E;
-		static double ALFA;
+		void setInput(std::vector<float> data);
+		static float E;
+		static float ALFA;
 		NerousNetwork(unsigned int inputCount, unsigned int outputCount, unsigned int hiddemCount, NerousNetworkDLL::Methods::IMethodNetwork * method, GenerateNS generateMethod);
+		void train(float *** trainSet, int);
+		float get(std::vector<float> input, int index);
 		virtual ~NerousNetwork();
 	};
 }

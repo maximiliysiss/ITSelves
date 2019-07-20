@@ -18,8 +18,8 @@ namespace NerousNetworkDLL::Nerons
 {
 
 	struct Synaps {
-		double weight;
-		Synaps(double weight);
+		float weight;
+		Synaps(float weight);
 	};
 
 	enum NeronType {
@@ -36,28 +36,30 @@ namespace NerousNetworkDLL::Nerons
 		virtual ~Neron();
 		inline auto getInputNerons() const { return inputNerons; }
 		inline auto getOutputNerons() const { return outputNerons; }
-		inline double getInput() const { return input; }
-		inline double getOutput() const { return output; }
+		inline float getInput() const { return input; }
+		inline float getOutput() const { return output; }
 		inline NerousNetworkDLL::ActivationPack* getActivationPack() { return activeFunction; }
-		inline void setActivationPack(ActivationPack * activation) { this->activeFunction = activation; }
+		inline void setActivationPack(ActivationPack * activation) {
+			this->activeFunction = activation;
+		}
 		virtual void calculateThrough();
-		virtual void createSynaps(Neron * from, double weight);
+		virtual void createSynaps(Neron * from, float weight);
 		inline NeronType getNeronType() const { return neronType; }
 	protected:
 		NerousNetworkDLL::ActivationPack * activeFunction;
 		std::map<Neron*, Synaps*> inputNerons;
 		std::map<Neron*, Synaps*> outputNerons;
-		double input{ 0 }, output{ 0 };
-		double delta{ 0 }, prevDelta{ 0 };
+		float input{ 0 }, output{ 0 };
+		float delta{ 0 }, prevDelta{ 0 };
 		NeronType neronType;
 	};
 
 	class InputNeron : public Neron
 	{
 	public:
-		InputNeron(ActivationPack*, double value = 0);
+		InputNeron(ActivationPack*, float value = 0);
 		virtual void calculateThrough() override {}
-		inline void setInput(double value) { input = output = value; }
+		inline void setInput(float value) { input = output = value; }
 	};
 
 	class OutputNeron : public Neron {
@@ -67,16 +69,16 @@ namespace NerousNetworkDLL::Nerons
 
 	class OutputNeronWithTeacher : public OutputNeron {
 	private:
-		double ideal;
+		float ideal;
 	public:
-		OutputNeronWithTeacher(ActivationPack*, double ideal = 0);
-		inline void setIdeal(double ideal) { this->ideal = ideal; }
+		OutputNeronWithTeacher(ActivationPack*, float ideal = 0);
+		inline void setIdeal(float ideal) { this->ideal = ideal; }
 		template<typename T>
 		T get() {
 			calculateThrough();
 			return (T)output;
 		}
-		inline double getError() { return ideal - output; };
+		inline float getError() { return ideal - output; };
 	};
 }
 
