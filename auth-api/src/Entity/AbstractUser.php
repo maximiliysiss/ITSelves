@@ -23,7 +23,7 @@ use JMS\Serializer\Annotation as JMS;
  * @JMS\ExclusionPolicy("ALL")
  * @JMS\Discriminator(disabled=true)
  */
-class AbstractUser
+abstract class AbstractUser
 {
     /**
      * @var int
@@ -43,6 +43,13 @@ class AbstractUser
      * @ORM\Column(nullable=true)
      */
     protected $token;
+
+    /**
+     * @var \DateTimeImmutable|null
+     *
+     * @ORM\Column(type="datetime_immutable", nullable=true)
+     */
+    protected $tokenExpiresAt;
 
     /**
      * @var string
@@ -88,22 +95,27 @@ class AbstractUser
      * AbstractUser constructor.
      *
      * @param string $name
-     * @param $key
-     *
+     * @param $phone
+     * @param $email
      * @throws \Exception
      */
-    public function __construct($name)
+    public function __construct($name, $phone, $email)
     {
         $this->name = $name;
+        $this->phone = $phone;
+        $this->email = $email;
         $this->createdAt = new \DateTimeImmutable();
     }
 
     /**
      * @return AbstractUser
+     *
+     * @throws \Exception
      */
     public function createToken()
     {
         $this->token = bin2hex(openssl_random_pseudo_bytes(32));
+        $this->tokenExpiresAt = new \DateTimeImmutable('tomorrow');
 
         return $this;
     }
@@ -216,5 +228,40 @@ class AbstractUser
         return $this;
     }
 
+    /**
+     * @return \DateTimeImmutable|null
+     */
+    public function getTokenExpiresAt(): ?\DateTimeImmutable
+    {
+        return $this->tokenExpiresAt;
+    }
 
+    /**
+     * @param \DateTimeImmutable|null $tokenExpiresAt
+     *
+     * @return AbstractUser
+     */
+    public function setTokenExpiresAt(?\DateTimeImmutable $tokenExpiresAt): AbstractUser
+    {
+        $this->tokenExpiresAt = $tokenExpiresAt;
+
+        return $this;
+    }
+
+    /**
+     * @return bool
+     *
+     * @throws \Exception
+     */
+    public function isTokenExpired(): bool
+    {
+        return $this->tokenExpiresAt > new \DateTimeImmutable();
+    }
+
+    /**
+     * @JMS\VirtualProperty(name="role")
+     *
+     * @return string
+     */
+    public abstract function getRole();
 }

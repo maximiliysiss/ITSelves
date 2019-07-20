@@ -14,7 +14,7 @@ namespace App\Request;
 use Swagger\Annotations as SWG;
 use Symfony\Component\Validator\Constraints as Assert;
 
-class RegistrationRequest extends JsonRequest
+class UpdateUserRequest extends JsonRequest
 {
     /**
      * @var string
@@ -36,6 +36,7 @@ class RegistrationRequest extends JsonRequest
      * @SWG\Property(type="string")
      */
     protected $phone;
+
 
     /**
      * @return \Symfony\Component\Validator\Constraint|\Symfony\Component\Validator\Constraint[]|Assert\Collection

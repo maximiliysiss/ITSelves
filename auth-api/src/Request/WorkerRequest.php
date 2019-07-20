@@ -11,12 +11,44 @@
 namespace App\Request;
 
 
-use Symfony\Component\HttpFoundation\Request;
+use Swagger\Annotations as SWG;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Class WorkerRequest
  */
 class WorkerRequest extends JsonRequest
 {
-    
+    /**
+     * @var string
+     *
+     * @SWG\Property(type="string")
+     */
+    protected $name;
+
+    /**
+     * @var string
+     *
+     * @SWG\Property(type="string")
+     */
+    protected $email;
+
+    /**
+     * @var string
+     *
+     * @SWG\Property(type="string")
+     */
+    protected $phone;
+
+    /**
+     * @return \Symfony\Component\Validator\Constraint|\Symfony\Component\Validator\Constraint[]|Assert\Collection
+     */
+    public function rules()
+    {
+        return new Assert\Collection([
+            'name' => new Assert\NotNull(),
+            'email' => new Assert\Email(),
+            'phone' => new Assert\NotNull(),
+        ]);
+    }
 }

@@ -11,7 +11,40 @@
 namespace App\Entity;
 
 
+use App\Request\WorkerRequest;
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Class Worker
+ *
+ * @ORM\Entity(repositoryClass="App\Repository\WorkerRepository")
+ */
 class Worker extends AbstractUser
 {
+    /**
+     * @param WorkerRequest $request
+     *
+     * @return Worker
+     *
+     * @throws \Exception
+     */
+    public static function createFromRequest(WorkerRequest $request)
+    {
+        return new self($request->get('name'), $request->get('phone'), $request->get('email'));
+    }
 
+    /**
+     * @param WorkerRequest $request
+     */
+    public function updateFromRequest(WorkerRequest $request)
+    {
+        $this->setName($request->get('name'));
+        $this->setPhone($request->get('phone'));
+        $this->setEmail($request->get('email'));
+    }
+
+    public function getRole()
+    {
+        return 'ROLE_WORKER';
+    }
 }

@@ -8,16 +8,15 @@
  * file that was distributed with this source code.
  */
 
-namespace App\Entity;
+namespace App\Repository;
 
-use Doctrine\ORM\Mapping as ORM;
+
+use Doctrine\ORM\EntityRepository;
 
 /**
- * Class Operator
- *
- * @ORM\Entity()
+ * Class WorkerRepository
  */
-class Operator extends AbstractUser
+class WorkerRepository extends EntityRepository
 {
 
 }

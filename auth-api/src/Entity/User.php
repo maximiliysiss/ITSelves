@@ -10,6 +10,8 @@
 
 namespace App\Entity;
 
+use App\Request\RegistrationRequest;
+use App\Request\UpdateUserRequest;
 use Doctrine\ORM\Mapping as ORM;
 use JMS\Serializer\Annotation as JMS;
 
@@ -42,13 +44,36 @@ class User extends AbstractUser
      *
      * @param string $name
      *
+     * @param string $phone
+     * @param string $email
      * @throws \Exception
      */
-    public function __construct(string $name)
+    public function __construct(string $name, string $phone, string $email)
     {
-        parent::__construct($name);
+        parent::__construct($name, $phone, $email);
     }
 
+    /**
+     * @param RegistrationRequest $request
+     *
+     * @return User
+     *
+     * @throws \Exception
+     */
+    public static function createFromRequest(RegistrationRequest $request)
+    {
+        return new self($request->get('name'), $request->get('phone'), $request->get('email'));
+    }
+
+    /**
+     * @param UpdateUserRequest $request
+     */
+    public function updateFromRequest(UpdateUserRequest $request)
+    {
+        $this->setName($request->get('name'));
+        $this->setPhone($request->get('phone'));
+        $this->setEmail($request->get('email'));
+    }
 
     public function createKey()
     {
@@ -57,5 +82,13 @@ class User extends AbstractUser
             $parts []= bin2hex(openssl_random_pseudo_bytes(2));
         }
         $this->userKey = implode('-', $parts);
+    }
+
+    /**
+     * @return string
+     */
+    public function getRole()
+    {
+        return 'ROLE_USER';
     }
 }

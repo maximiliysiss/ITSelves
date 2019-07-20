@@ -72,10 +72,9 @@ class AuthController extends AbstractController
      */
     public function registrationAction(RegistrationRequest $request)
     {
-        $name = $request->get('name');
-
         /** @var User $user */
-        $user = new User($name);
+        $user = User::createFromRequest($request);
+
         $user->createKey();
 
         $em = $this->getDoctrine()->getManager();
@@ -110,6 +109,8 @@ class AuthController extends AbstractController
      * @param LoginRequest $request
      *
      * @return JsonResponse
+     *
+     * @throws \Exception
      */
     public function loginAction(LoginRequest $request)
     {
@@ -137,7 +138,6 @@ class AuthController extends AbstractController
     /**
      * @Route("/auth/", name="auth", methods={"post"})
      *
-     *
      * @SWG\Response(
      *     response="200",
      *     description="Проверка токена. Возвращает пользователя по токену.",
@@ -158,6 +158,8 @@ class AuthController extends AbstractController
      * @param VerifyTokenRequest $request
      *
      * @return JsonResponse
+     *
+     * @throws \Exception
      */
     public function verifyTokenAction(VerifyTokenRequest $request)
     {
@@ -168,7 +170,7 @@ class AuthController extends AbstractController
             'token' => $token,
         ]);
 
-        if (empty($user)) {
+        if (empty($user) && !$user->isTokenExpired()) {
             throw new BadCredentialsException("Неверный токен");
         }
 
@@ -178,20 +180,20 @@ class AuthController extends AbstractController
             )
         );
     }
-
-    /**
-     * @Route("/")
-     *
-     * @return JsonResponse
-     */
-    public function tAction()
-    {
-        return JsonResponse::fromJsonString(
-            $this->serializer->serialize(
-                $this->getAbstractUserRepository()->findAll(), 'json'
-            )
-        );
-    }
+//
+//    /**
+//     * @Route("/")
+//     *
+//     * @return JsonResponse
+//     */
+//    public function tAction()
+//    {
+//        return JsonResponse::fromJsonString(
+//            $this->serializer->serialize(
+//                $this->getAbstractUserRepository()->findAll(), 'json'
+//            )
+//        );
+//    }
 
     /**
      * @return \App\Repository\AbstractUserRepository|\Doctrine\Common\Persistence\ObjectRepository
