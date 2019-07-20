@@ -24,7 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CommonActions\CommonActions.csproj" />
+    <ProjectReference Include="..\CommonActionsWeb\CommonActionsWeb.csproj" />
   </ItemGroup>
 
 </Project>
