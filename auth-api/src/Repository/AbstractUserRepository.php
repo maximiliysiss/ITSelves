@@ -11,6 +11,7 @@
 namespace App\Repository;
 
 
+use App\Entity\AbstractUser;
 use Doctrine\ORM\EntityRepository;
 
 /**
@@ -18,5 +19,19 @@ use Doctrine\ORM\EntityRepository;
  */
 class AbstractUserRepository extends EntityRepository
 {
+    /**
+     * @param $token
+     *
+     * @return AbstractUser
+     *
+     * @throws \Doctrine\ORM\NonUniqueResultException
+     */
+    public function getUserByToken($token)
+    {
+        $qb = $this->createQueryBuilder('o')
+            ->where('o.token = :token')
+            ->setParameter('token', $token);
 
+        return $qb->getQuery()->getOneOrNullResult();
+    }
 }

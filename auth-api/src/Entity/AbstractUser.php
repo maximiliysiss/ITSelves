@@ -12,6 +12,7 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use JMS\Serializer\Annotation as JMS;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * Class User
@@ -23,7 +24,7 @@ use JMS\Serializer\Annotation as JMS;
  * @JMS\ExclusionPolicy("ALL")
  * @JMS\Discriminator(disabled=true)
  */
-abstract class AbstractUser
+abstract class AbstractUser implements UserInterface
 {
     /**
      * @var int
@@ -264,4 +265,34 @@ abstract class AbstractUser
      * @return string
      */
     public abstract function getRole();
+
+    public function getUsername()
+    {
+        // do nothing
+        return null;
+    }
+
+    public function getPassword()
+    {
+        // do nothing
+        return null;
+    }
+
+    public function getRoles()
+    {
+        // do nothing
+        return [];
+    }
+
+    public function getSalt()
+    {
+        // do nothing
+        return null;
+    }
+
+    public function eraseCredentials()
+    {
+        // do nothing
+        //return null;
+    }
 }

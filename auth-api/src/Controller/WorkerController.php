@@ -16,6 +16,7 @@ use App\Request\WorkerRequest;
 use JMS\Serializer\Serializer;
 use JMS\Serializer\SerializerInterface;
 use Nelmio\ApiDocBundle\Annotation\Model;
+use Nelmio\ApiDocBundle\Annotation\Security;
 use Swagger\Annotations as SWG;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -29,6 +30,8 @@ use Symfony\Component\Routing\Annotation\Route;
  * @Route("/worker", name="worker_")
  *
  * @SWG\Tag(name="Worker")
+ *
+ * @Security(name="Token")
  */
 class WorkerController extends AbstractController
 {

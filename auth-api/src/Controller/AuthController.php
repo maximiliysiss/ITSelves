@@ -170,7 +170,7 @@ class AuthController extends AbstractController
             'token' => $token,
         ]);
 
-        if (empty($user) && !$user->isTokenExpired()) {
+        if (empty($user) || !$user->isTokenExpired()) {
             throw new BadCredentialsException("Неверный токен");
         }
 
@@ -180,20 +180,7 @@ class AuthController extends AbstractController
             )
         );
     }
-//
-//    /**
-//     * @Route("/")
-//     *
-//     * @return JsonResponse
-//     */
-//    public function tAction()
-//    {
-//        return JsonResponse::fromJsonString(
-//            $this->serializer->serialize(
-//                $this->getAbstractUserRepository()->findAll(), 'json'
-//            )
-//        );
-//    }
+
 
     /**
      * @return \App\Repository\AbstractUserRepository|\Doctrine\Common\Persistence\ObjectRepository
