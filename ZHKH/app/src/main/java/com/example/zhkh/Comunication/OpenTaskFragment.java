@@ -13,6 +13,7 @@ import android.widget.ListView;
 
 import com.example.zhkh.ApiInteractions.ApiWorker;
 import com.example.zhkh.ApiInteractions.IAuthApi;
+import com.example.zhkh.ApiInteractions.Singleton;
 import com.example.zhkh.ApiInteractions.pojoes.Task;
 import com.example.zhkh.R;
 
@@ -51,7 +52,7 @@ public class OpenTaskFragment extends Fragment {
         ApiWorker awt = new ApiWorker("http://85.143.11.233:8000/");
 
         IAuthApi taskApi = awt.getLog();
-        taskApi.getTask().enqueue(new Callback<List<Task>>()
+        taskApi.getTask(Singleton.getInstance().getToken()).enqueue(new Callback<List<Task>>()
         {
 
             @Override

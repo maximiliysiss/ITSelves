@@ -19,5 +19,5 @@ public interface IAuthApi
     Call<Token> getAuth(@Body Key key);
 
     @GET("tasks")
-    Call<List<Task>> getTask();
+    Call<List<Task>> getTask(@Header("token")String token);
 }

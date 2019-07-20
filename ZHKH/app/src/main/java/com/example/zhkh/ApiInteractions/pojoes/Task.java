@@ -1,12 +1,14 @@
 package com.example.zhkh.ApiInteractions.pojoes;
 
+import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-import java.util.List;
-
 public class Task {
 
+    @SerializedName("worker")
+    @Expose
+    private Integer worker;
     @SerializedName("house")
     @Expose
     private Integer house;
@@ -15,7 +17,7 @@ public class Task {
     private List<Object> historyTasks = null;
     @SerializedName("category")
     @Expose
-    private Category category;
+    private Integer category;
     @SerializedName("photos")
     @Expose
     private List<Object> photos = null;
@@ -25,6 +27,12 @@ public class Task {
     @SerializedName("dateTime")
     @Expose
     private String dateTime;
+    @SerializedName("name")
+    @Expose
+    private Object name;
+    @SerializedName("shortName")
+    @Expose
+    private String shortName;
     @SerializedName("taskStatus")
     @Expose
     private Integer taskStatus;
@@ -34,9 +42,23 @@ public class Task {
     @SerializedName("houseJSON")
     @Expose
     private HouseJSON houseJSON;
-    @SerializedName("worker")
+    @SerializedName("workerJSON")
     @Expose
-    private Integer worker;
+    private WorkerJSON workerJSON;
+    @SerializedName("rate")
+    @Expose
+    private Integer rate;
+    @SerializedName("comment")
+    @Expose
+    private Object comment;
+
+    public Integer getWorker() {
+        return worker;
+    }
+
+    public void setWorker(Integer worker) {
+        this.worker = worker;
+    }
 
     public Integer getHouse() {
         return house;
@@ -54,11 +76,11 @@ public class Task {
         this.historyTasks = historyTasks;
     }
 
-    public Category getCategory() {
+    public Integer getCategory() {
         return category;
     }
 
-    public void setCategory(Category category) {
+    public void setCategory(Integer category) {
         this.category = category;
     }
 
@@ -86,6 +108,22 @@ public class Task {
         this.dateTime = dateTime;
     }
 
+    public Object getName() {
+        return name;
+    }
+
+    public void setName(Object name) {
+        this.name = name;
+    }
+
+    public String getShortName() {
+        return shortName;
+    }
+
+    public void setShortName(String shortName) {
+        this.shortName = shortName;
+    }
+
     public Integer getTaskStatus() {
         return taskStatus;
     }
@@ -110,12 +148,28 @@ public class Task {
         this.houseJSON = houseJSON;
     }
 
-    public Integer getWorker() {
-        return worker;
+    public WorkerJSON getWorkerJSON() {
+        return workerJSON;
     }
 
-    public void setWorker(Integer worker) {
-        this.worker = worker;
+    public void setWorkerJSON(WorkerJSON workerJSON) {
+        this.workerJSON = workerJSON;
+    }
+
+    public Integer getRate() {
+        return rate;
+    }
+
+    public void setRate(Integer rate) {
+        this.rate = rate;
+    }
+
+    public Object getComment() {
+        return comment;
+    }
+
+    public void setComment(Object comment) {
+        this.comment = comment;
     }
 
 }

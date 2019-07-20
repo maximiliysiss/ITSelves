@@ -47,29 +47,6 @@ public class ApiWorker
     }
 
 
-    public void GettingTasks()
-    {
-        log.getTask().enqueue(new Callback<List<Task>>()
-        {
 
-            @Override
-            public void onResponse(Call<List<Task>> call, Response<List<Task>> response)
-            {
-                if(!response.isSuccessful())
-                {
-                    System.out.println("We got some troubles. But server is okay");
-                    return;
-                }
-
-            }
-
-            @Override
-            public void onFailure(Call<List<Task>> call, Throwable t)
-            {
-                System.out.println(t.getMessage());
-            }
-
-        });
-    }
 
 }
