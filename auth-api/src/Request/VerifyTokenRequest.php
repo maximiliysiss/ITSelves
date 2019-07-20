@@ -11,13 +11,10 @@
 namespace App\Request;
 
 
-use Fesor\RequestObject\PayloadResolver;
-use Fesor\RequestObject\RequestObject;
 use Swagger\Annotations as SWG;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Validator\Constraints as Assert;
 
-class VerifyTokenRequest extends RequestObject implements PayloadResolver
+class VerifyTokenRequest extends JsonRequest
 {
     /**
      * @var string
@@ -34,15 +31,5 @@ class VerifyTokenRequest extends RequestObject implements PayloadResolver
         return new Assert\Collection([
             'token' => new Assert\NotNull(),
         ]);
-    }
-
-    /**
-     * @param Request $request
-     *
-     * @return array|mixed
-     */
-    public function resolvePayload(Request $request)
-    {
-        return json_decode($request->getContent(), true) ?? [];
     }
 }
