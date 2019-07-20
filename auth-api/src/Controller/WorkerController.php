@@ -73,6 +73,7 @@ class WorkerController extends AbstractController
      */
     public function createAction(WorkerRequest $request)
     {
+        $this->denyAccessUnlessGranted('ROLE_OPERATOR');
         $worker = Worker::createFromRequest($request);
 
         $em = $this->getDoctrine()->getManager();
@@ -156,6 +157,7 @@ class WorkerController extends AbstractController
      */
     public function removeAction($id)
     {
+        $this->denyAccessUnlessGranted('ROLE_OPERATOR');
         $worker = $this->getWorkerRepository()->find($id);
 
         if (empty($worker)) {
@@ -195,6 +197,7 @@ class WorkerController extends AbstractController
      */
     public function updateAction($id)
     {
+        $this->denyAccessUnlessGranted('ROLE_OPERATOR');
         /** @var Worker $worker */
         $worker = $this->getWorkerRepository()->find($id);
 

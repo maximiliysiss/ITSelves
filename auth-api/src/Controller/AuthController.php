@@ -20,6 +20,7 @@ use App\Response\TokenResponse;
 use JMS\Serializer\Serializer;
 use JMS\Serializer\SerializerInterface;
 use Nelmio\ApiDocBundle\Annotation\Model;
+use Nelmio\ApiDocBundle\Annotation\Security;
 use Swagger\Annotations as SWG;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -64,6 +65,8 @@ class AuthController extends AbstractController
      *
      * @SWG\Tag(name="WebClient")
      *
+     * @Security(name="Token")
+     *
      * @param RegistrationRequest $request
      *
      * @return JsonResponse
@@ -72,6 +75,7 @@ class AuthController extends AbstractController
      */
     public function registrationAction(RegistrationRequest $request)
     {
+        $this->denyAccessUnlessGranted('ROLE_OPERATOR')
         /** @var User $user */
         $user = User::createFromRequest($request);
 
@@ -170,7 +174,7 @@ class AuthController extends AbstractController
             'token' => $token,
         ]);
 
-        if (empty($user) || !$user->isTokenExpired()) {
+        if (empty($user) || $user->isTokenExpired()) {
             throw new BadCredentialsException("Неверный токен");
         }
 

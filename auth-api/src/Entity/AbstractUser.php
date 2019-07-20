@@ -263,7 +263,7 @@ abstract class AbstractUser implements UserInterface
      */
     public function isTokenExpired(): bool
     {
-        return $this->tokenExpiresAt > new \DateTimeImmutable();
+        return $this->tokenExpiresAt < new \DateTimeImmutable();
     }
 
     /**

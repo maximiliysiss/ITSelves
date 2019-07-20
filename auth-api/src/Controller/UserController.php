@@ -76,6 +76,7 @@ class UserController extends AbstractController
      */
     public function updateUser($id, UpdateUserRequest $request)
     {
+        $this->denyAccessUnlessGranted('ROLE_OPERATOR');
         /** @var User $user */
         $user = $this->getUserRepository()->find($id);
 
@@ -110,6 +111,7 @@ class UserController extends AbstractController
      */
     public function removeUser($id)
     {
+        $this->denyAccessUnlessGranted('ROLE_OPERATOR');
         /** @var User $user */
         $user = $this->getUserRepository()->find($id);
 

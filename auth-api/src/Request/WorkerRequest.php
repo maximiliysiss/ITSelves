@@ -41,6 +41,13 @@ class WorkerRequest extends JsonRequest
     protected $phone;
 
     /**
+     * @var string
+     *
+     * @SWG\Property(type="number")
+     */
+    protected $taskType;
+
+    /**
      * @return \Symfony\Component\Validator\Constraint|\Symfony\Component\Validator\Constraint[]|Assert\Collection
      */
     public function rules()
@@ -49,6 +56,7 @@ class WorkerRequest extends JsonRequest
             'name' => new Assert\NotNull(),
             'email' => new Assert\Email(),
             'phone' => new Assert\NotNull(),
+            'task_type' => new Assert\Type(['type' => 'int']),
         ]);
     }
 }

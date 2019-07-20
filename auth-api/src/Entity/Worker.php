@@ -22,6 +22,19 @@ use Doctrine\ORM\Mapping as ORM;
 class Worker extends AbstractUser
 {
     /**
+     * @var string
+     *
+     * @ORM\Column(type="integer")
+     */
+    protected $taskType;
+
+    public function __construct(string $name, $phone, $email, $taskType)
+    {
+        parent::__construct($name, $phone, $email);
+        $this->taskType = $taskType;
+    }
+
+    /**
      * @param WorkerRequest $request
      *
      * @return Worker
@@ -30,7 +43,12 @@ class Worker extends AbstractUser
      */
     public static function createFromRequest(WorkerRequest $request)
     {
-        return new self($request->get('name'), $request->get('phone'), $request->get('email'));
+        return new self(
+            $request->get('name'),
+            $request->get('phone'),
+            $request->get('email'),
+            $request->get('task_type')
+        );
     }
 
     /**

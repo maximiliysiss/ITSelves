@@ -114,7 +114,7 @@ class TokenAuthenticator extends AbstractGuardAuthenticator
      */
     public function checkCredentials($credentials, UserInterface $user)
     {
-        return $user !== null && $user->isTokenExpired() && $user->getRole() === 'ROLE_OPERATOR';
+        return $user !== null && !$user->isTokenExpired();
     }
 
     /**
