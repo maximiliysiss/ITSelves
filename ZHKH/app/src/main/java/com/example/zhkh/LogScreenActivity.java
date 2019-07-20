@@ -33,7 +33,6 @@ public class LogScreenActivity extends AppCompatActivity {
 
     public void onPasswordButClick(View view) throws InterruptedException {
 
-
         ApiWorker awt = new ApiWorker("http://85.143.11.233:8000/");
         awt.GettingTasks();
         awt.getTaskResult();

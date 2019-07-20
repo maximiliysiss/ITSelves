@@ -1,7 +1,10 @@
 package com.example.zhkh;
 
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.annotation.NonNull;
 import android.view.MenuItem;
@@ -10,54 +13,44 @@ import android.widget.TextView;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+import com.example.zhkh.Comunication.CommunicationFragment;
+import com.example.zhkh.Fragments.ProfileFragment;
+import com.example.zhkh.Schedule.ScheduleFragment;
 
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
-
-public class MainActivity extends AppCompatActivity {
-    private TextView mTextMessage;
-
-//    Gson gson = new GsonBuilder()
-//            .setLenient()
-//            .create();
-//
-//    Retrofit retrofit =  new Retrofit.Builder()
-//            .baseUrl("https://your.api.url/v2/")
-//            .addConverterFactory(GsonConverterFactory.create(gson))
-//            .build();
+public class MainActivity extends AppCompatActivity{
 
     NavController navController;
-
-
-    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
-
+    private FragmentTransaction ftrans;
+    private BottomNavigationView.OnNavigationItemSelectedListener
+            navListener =
+            new BottomNavigationView.OnNavigationItemSelectedListener() {
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            Fragment selectedFragment = new CommunicationFragment();
+            ftrans = getSupportFragmentManager().beginTransaction();
             switch (item.getItemId()) {
                 case R.id.navigation_sсhedule:
-                    navController.navigate(R.id.scheduleFragment);
-                    return true;
+                    selectedFragment = new ScheduleFragment();
+                    break;
                 case R.id.navigation_comunication:
-                    navController.navigate(R.id.fragmentCommunication);
-                    return true;
+                    selectedFragment = new CommunicationFragment();
+                    break;
                 case R.id.navigation_profile:
-                    navController.navigate(R.id.profileFragment);
-                    return true;
+                    selectedFragment = new ProfileFragment();
+                    break;
             }
-            return false;
+            ftrans.replace(R.id.fragment_conteiner, selectedFragment).commit();
+            return true;
         }
     };
 
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        BottomNavigationView navView = findViewById(R.id.nav_view);
-        mTextMessage = findViewById(R.id.message);
-        navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-        navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+        BottomNavigationView bottomNav = findViewById(R.id.nav_view);
+        bottomNav.setOnNavigationItemSelectedListener(navListener);
     }
 
 }

@@ -13,13 +13,22 @@
 
     <fragment
         android:id="@+id/fragmentCommunication"
-        android:name="com.example.zhkh.Fragments.CommunicationFragment"
+        android:name="com.example.zhkh.Comunication.CommunicationFragment"
         android:label="fragment_communication"
-        tools:layout="@layout/fragment_communication" />
+        tools:layout="@layout/fragment_communication" >
+        <action
+            android:id="@+id/action_fragmentCommunication_to_createTaskFragment"
+            app:destination="@id/createTaskFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/scheduleFragment"
-        android:name="com.example.zhkh.Fragments.ScheduleFragment"
+        android:name="com.example.zhkh.Schedule.ScheduleFragment"
         android:label="fragment_schedule"
         tools:layout="@layout/fragment_schedule" />
+    <fragment
+        android:id="@+id/createTaskFragment"
+        android:name="com.example.zhkh.Fragments.CreateTaskFragment"
+        android:label="fragment_create_task"
+        tools:layout="@layout/fragment_create_task" />
 </navigation>
