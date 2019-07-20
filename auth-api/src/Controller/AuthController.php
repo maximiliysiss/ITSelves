@@ -75,7 +75,7 @@ class AuthController extends AbstractController
      */
     public function registrationAction(RegistrationRequest $request)
     {
-        $this->denyAccessUnlessGranted('ROLE_OPERATOR')
+        $this->denyAccessUnlessGranted('ROLE_OPERATOR');
         /** @var User $user */
         $user = User::createFromRequest($request);
 
