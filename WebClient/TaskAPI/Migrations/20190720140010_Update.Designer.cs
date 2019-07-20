@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TaskAPI;
 
 namespace TaskAPI.Migrations
 {
     [DbContext(typeof(DatabaseTaskAPI))]
-    partial class DatabaseTaskAPIModelSnapshot : ModelSnapshot
+    [Migration("20190720140010_Update")]
+    partial class Update
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -32,50 +34,17 @@ namespace TaskAPI.Migrations
                     b.ToTable("Category");
                 });
 
-            modelBuilder.Entity("TaskAPI.Models.HistoryTask", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int?>("CategoryID");
-
-                    b.Property<DateTime>("DateTime");
-
-                    b.Property<string>("Description");
-
-                    b.Property<int>("House");
-
-                    b.Property<int?>("OriginalTaskID");
-
-                    b.Property<int?>("TaskStatus");
-
-                    b.Property<int>("Worker");
-
-                    b.HasKey("ID");
-
-                    b.HasIndex("CategoryID");
-
-                    b.HasIndex("OriginalTaskID");
-
-                    b.ToTable("HistoryTasks");
-                });
-
             modelBuilder.Entity("TaskAPI.Models.Photo", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("HistoryTaskID");
-
                     b.Property<string>("Path");
 
                     b.Property<int?>("TaskID");
 
                     b.HasKey("ID");
-
-                    b.HasIndex("HistoryTaskID");
 
                     b.HasIndex("TaskID");
 
@@ -94,6 +63,9 @@ namespace TaskAPI.Migrations
 
                     b.Property<string>("Description");
 
+                    b.Property<string>("Discriminator")
+                        .IsRequired();
+
                     b.Property<int>("House");
 
                     b.Property<int?>("TaskStatus");
@@ -105,25 +77,23 @@ namespace TaskAPI.Migrations
                     b.HasIndex("CategoryID");
 
                     b.ToTable("Task");
+
+                    b.HasDiscriminator<string>("Discriminator").HasValue("Task");
                 });
 
             modelBuilder.Entity("TaskAPI.Models.HistoryTask", b =>
                 {
-                    b.HasOne("TaskAPI.Models.Category", "Category")
-                        .WithMany()
-                        .HasForeignKey("CategoryID");
+                    b.HasBaseType("TaskAPI.Models.Task");
 
-                    b.HasOne("TaskAPI.Models.Task", "OriginalTask")
-                        .WithMany("HistoryTasks")
-                        .HasForeignKey("OriginalTaskID");
+                    b.Property<int?>("OriginalTaskID");
+
+                    b.HasIndex("OriginalTaskID");
+
+                    b.HasDiscriminator().HasValue("HistoryTask");
                 });
 
             modelBuilder.Entity("TaskAPI.Models.Photo", b =>
                 {
-                    b.HasOne("TaskAPI.Models.HistoryTask")
-                        .WithMany("Photos")
-                        .HasForeignKey("HistoryTaskID");
-
                     b.HasOne("TaskAPI.Models.Task")
                         .WithMany("Photos")
                         .HasForeignKey("TaskID");
@@ -134,6 +104,13 @@ namespace TaskAPI.Migrations
                     b.HasOne("TaskAPI.Models.Category", "Category")
                         .WithMany()
                         .HasForeignKey("CategoryID");
+                });
+
+            modelBuilder.Entity("TaskAPI.Models.HistoryTask", b =>
+                {
+                    b.HasOne("TaskAPI.Models.Task", "OriginalTask")
+                        .WithMany("HistoryTasks")
+                        .HasForeignKey("OriginalTaskID");
                 });
 #pragma warning restore 612, 618
         }

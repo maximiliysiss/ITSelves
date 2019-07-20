@@ -41,9 +41,9 @@ namespace TaskAPI.Controllers
         }
 
         // PUT: api/Categories/5
-        [HttpPost()]
+        [HttpPut]
         [Route("edit")]
-        public async Task<IActionResult> PutCategory(Category category)
+        public async Task<IActionResult> Edit(Category category)
         {
             _context.Entry(category).State = EntityState.Modified;
 
@@ -62,7 +62,7 @@ namespace TaskAPI.Controllers
         // POST: api/Categories
         [HttpPost]
         [Route("add")]
-        public async Task<ActionResult<Category>> PostCategory(Category category)
+        public async Task<ActionResult<Category>> Add(Category category)
         {
             _context.Category.Add(category);
             await _context.SaveChangesAsync();

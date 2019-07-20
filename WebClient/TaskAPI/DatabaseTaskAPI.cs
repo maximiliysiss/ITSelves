@@ -14,6 +14,7 @@ namespace TaskAPI
         {
         }
         public DbSet<TaskAPI.Models.Category> Category { get; set; }
+        public DbSet<Models.HistoryTask> HistoryTasks { get; set; }
         public DbSet<TaskAPI.Models.Task> Task { get; set; }
     }
 }

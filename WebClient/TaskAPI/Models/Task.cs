@@ -1,4 +1,6 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using CommonActions;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -19,11 +21,16 @@ namespace TaskAPI.Models
 
     public class Task
     {
+        public Task()
+        {
+            //WorkerLoad = new DynamicLoadBy(this, "Worker", Configuration.URLS["Task"]);
+            HouseLoad = new DynamicLoadBy(this, "House", $"{Configuration.URLS["HCS"]}/Houses");
+        }
         public int ID { get; set; }
         /// <summary>
         /// Исторические изменения
         /// </summary>
-        public List<HistoryTask> HistoryTasks { get; set; }
+        virtual public List<HistoryTask> HistoryTasks { get; set; }
         /// <summary>
         /// Время выполнения 
         /// </summary>
@@ -39,30 +46,26 @@ namespace TaskAPI.Models
         /// <summary>
         /// Категория
         /// </summary>
-        public Category Category { get; set; }
+        virtual public Category Category { get; set; }
         /// <summary>
         /// Фотографии
         /// </summary>
-        public List<Photo> Photos { get; set; }
+        virtual public List<Photo> Photos { get; set; }
         /// <summary>
         /// Дом
         /// </summary>
-        public string House { get; set; }
+        public int House { get; set; }
         [NotMapped]
-        public JObject HouseJSON
-        {
-            get => JObject.Parse(House);
-            set => House = value.ToString();
-        }
+        [JsonIgnore]
+        private DynamicLoadBy HouseLoad;
+        public JObject HouseJSON => JObject.Parse(HouseLoad.ToString());
         /// <summary>
         /// Работник
         /// </summary>
-        public string Worker { get; set; }
+        public int Worker { get; set; }
         [NotMapped]
-        public JObject WorkerJSON
-        {
-            get => JObject.Parse(House);
-            set => House = value.ToString();
-        }
+        [JsonIgnore]
+        private DynamicLoadBy WorkerLoad;
+        //public string WorkerJSON => HouseLoad.ToString();
     }
 }

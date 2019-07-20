@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TaskAPI;
 
 namespace TaskAPI.Migrations
 {
     [DbContext(typeof(DatabaseTaskAPI))]
-    partial class DatabaseTaskAPIModelSnapshot : ModelSnapshot
+    [Migration("20190720141934_Update2")]
+    partial class Update2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -44,6 +46,8 @@ namespace TaskAPI.Migrations
 
                     b.Property<string>("Description");
 
+                    b.Property<int?>("HistoryTaskID");
+
                     b.Property<int>("House");
 
                     b.Property<int?>("OriginalTaskID");
@@ -55,6 +59,8 @@ namespace TaskAPI.Migrations
                     b.HasKey("ID");
 
                     b.HasIndex("CategoryID");
+
+                    b.HasIndex("HistoryTaskID");
 
                     b.HasIndex("OriginalTaskID");
 
@@ -112,6 +118,10 @@ namespace TaskAPI.Migrations
                     b.HasOne("TaskAPI.Models.Category", "Category")
                         .WithMany()
                         .HasForeignKey("CategoryID");
+
+                    b.HasOne("TaskAPI.Models.HistoryTask")
+                        .WithMany("HistoryTasks")
+                        .HasForeignKey("HistoryTaskID");
 
                     b.HasOne("TaskAPI.Models.Task", "OriginalTask")
                         .WithMany("HistoryTasks")

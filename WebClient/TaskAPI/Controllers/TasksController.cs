@@ -40,9 +40,9 @@ namespace TaskAPI.Controllers
             return task;
         }
 
-        [HttpPost]
+        [HttpPut]
         [Route("edit")]
-        public async Task<IActionResult> PutTask(Models.Task task)
+        public async Task<IActionResult> Edit(Models.Task task)
         {
             _context.Entry(task).State = EntityState.Modified;
 
@@ -60,7 +60,7 @@ namespace TaskAPI.Controllers
 
         [HttpPost]
         [Route("add")]
-        public async Task<ActionResult<Models.Task>> PostTask(Models.Task task)
+        public async Task<ActionResult<Models.Task>> Add(Models.Task task)
         {
             _context.Task.Add(task);
             await _context.SaveChangesAsync();
