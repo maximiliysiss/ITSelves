@@ -25,6 +25,7 @@ public class ApiWorker
     private Gson gson;
     private String baseUrl;
     private IAuthApi log;
+    private List<Task> taskResult;
 
     public IAuthApi getLog() {
         return log;
@@ -46,7 +47,11 @@ public class ApiWorker
         log = rf.create(IAuthApi.class);
     }
 
-    public ArrayList<Task> GettingTasks()
+    public List<Task> getTaskResult() {
+        return taskResult;
+    }
+
+    public void GettingTasks()
     {
         log.getTask().enqueue(new Callback<List<Task>>()
         {
@@ -59,8 +64,8 @@ public class ApiWorker
                     System.out.println("We got some troubles. But server is okay");
                     return;
                 }
-                List<Task> res = response.body();
-                int i = 5;
+                taskResult = response.body();
+
             }
 
             @Override
@@ -70,7 +75,6 @@ public class ApiWorker
             }
 
         });
-        return new ArrayList<>();
     }
 
 }

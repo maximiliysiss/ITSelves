@@ -36,6 +36,7 @@ public class LogScreenActivity extends AppCompatActivity {
 
         ApiWorker awt = new ApiWorker("http://85.143.11.233:8000/");
         awt.GettingTasks();
+        awt.getTaskResult();
 
         ApiWorker aw = new ApiWorker("http://85.143.10.92:8001/");
         IAuthApi login = aw.getLog();
