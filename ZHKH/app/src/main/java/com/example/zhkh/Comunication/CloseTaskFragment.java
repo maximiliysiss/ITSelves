@@ -9,10 +9,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
+import com.example.zhkh.ApiInteractions.ApiWorker;
+import com.example.zhkh.ApiInteractions.pojoes.Task;
 import com.example.zhkh.R;
 
 import org.json.JSONException;
 
+import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 
 public class CloseTaskFragment extends Fragment {
@@ -36,8 +39,17 @@ public class CloseTaskFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(LAYOUT, container, false);
         //TODO получить список заявок
-       // ListView lv = (ListView) view.findViewById(R.id.taskList);
-//        ArrearsAdapter adapter = new ArrearsAdapter(view.getContext(), R.layout.item_event, list);
+//        ApiWorker awt = new ApiWorker("http://85.143.11.233:8000/");
+//        awt.GettingTasks();
+//        ListView lv = (ListView) view.findViewById(R.id.taskList);
+//        ArrayList<Task> taskList = (ArrayList<Task>) awt.getTaskResult();
+//        for(int i = 0; i<taskList.size(); i++){
+//            Task temp = taskList.get(i);
+//            if(temp.getTaskStatus()==0 || temp.getTaskStatus()==1){
+//                taskList.remove(i);
+//            }
+//        }
+//        ListTaskAdapter adapter = new ListTaskAdapter(view.getContext(), R.layout.item_event, taskList);
 //        lv.setAdapter(adapter);
         return view;
     }
