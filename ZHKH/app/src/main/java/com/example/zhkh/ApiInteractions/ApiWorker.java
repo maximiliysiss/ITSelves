@@ -25,7 +25,6 @@ public class ApiWorker
     private Gson gson;
     private String baseUrl;
     private IAuthApi log;
-    private List<Task> taskResult;
 
     public IAuthApi getLog() {
         return log;
@@ -47,9 +46,6 @@ public class ApiWorker
         log = rf.create(IAuthApi.class);
     }
 
-    public List<Task> getTaskResult() {
-        return taskResult;
-    }
 
     public void GettingTasks()
     {
@@ -64,7 +60,6 @@ public class ApiWorker
                     System.out.println("We got some troubles. But server is okay");
                     return;
                 }
-                taskResult = response.body();
 
             }
 
