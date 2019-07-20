@@ -7,6 +7,33 @@ namespace NerousNetworkDLL
 	float NerousNetwork::E = 0.1f;
 
 
+	void NerousNetwork::save()
+	{
+		std::ofstream file("nn.output");
+		for (auto n : hiddenNerons) {
+			for (auto i : n->getInputNerons())
+				file << i.second->weight << ' ';
+			for (auto o : n->getOutputNerons())
+				file << o.second->weight << ' ';
+		}
+		file.close();
+	}
+
+	void NerousNetwork::load()
+	{
+		std::ifstream file("nn.output");
+		if (!file.is_open()) {
+			return;
+		}
+		for (auto n : hiddenNerons) {
+			for (auto i : n->getInputNerons())
+				file >> i.second->weight;
+			for (auto o : n->getOutputNerons())
+				file >> o.second->weight;
+		}
+		file.close();
+	}
+
 	void NerousNetwork::calculate()
 	{
 		for (auto output : outputNerons)
@@ -39,6 +66,7 @@ namespace NerousNetworkDLL
 
 	void NerousNetwork::train(float *** trainSet, int count)
 	{
+		load();
 		auto e = 0.01;
 		float temp_mses[4]{ 0 };
 		float temp_cost = 0;
@@ -61,6 +89,7 @@ namespace NerousNetworkDLL
 			temp_cost = std::accumulate(temp_mses, temp_mses + count, 0.0f) / 4.0f;
 			std::cout << temp_cost << std::endl;
 		} while (temp_cost > e);
+		save();
 	}
 
 	float NerousNetwork::get(std::vector<float> input, int index)

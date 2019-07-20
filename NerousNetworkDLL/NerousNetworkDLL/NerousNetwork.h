@@ -3,6 +3,7 @@
 #include "Nerons.h"
 #include "IMethodNetwork.h"
 #include <numeric>
+#include <fstream>
 
 namespace NerousNetworkDLL::Methods
 {
@@ -25,6 +26,8 @@ namespace NerousNetworkDLL
 		std::vector<NerousNetworkDLL::Nerons::InputNeron*> inputNerons;
 		std::vector<NerousNetworkDLL::Nerons::OutputNeron*> outputNerons;
 		std::vector<NerousNetworkDLL::Nerons::Neron*> hiddenNerons;
+		void save();
+		void load();
 		NerousNetworkDLL::Methods::IMethodNetwork * method;
 	public:
 		inline auto getInputs() const { return inputNerons; }

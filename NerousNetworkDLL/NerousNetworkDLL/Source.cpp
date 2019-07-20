@@ -22,20 +22,18 @@ void GenerateNS(std::vector<NerousNetworkDLL::Nerons::InputNeron*> inputs, std::
 	outputs[1]->createSynaps(nerons[2], -7.2964f);
 	outputs[1]->createSynaps(nerons[3], -4.2420f);
 
-	outputs[0]->setActivationPack(new NerousNetworkDLL::SigmoidOutputActivation());
-	outputs[1]->setActivationPack(new NerousNetworkDLL::SigmoidOutputActivation());
+	for (auto &n : outputs)
+		n->setActivationPack(new NerousNetworkDLL::SigmoidOutputActivation());
 
-	for (auto& n : inputs) {
+	for (auto& n : inputs)
 		n->setActivationPack(new NerousNetworkDLL::SigmoidActivation());
-	}
 
-	for (auto& n : nerons) {
+	for (auto& n : nerons)
 		n->setActivationPack(new NerousNetworkDLL::SigmoidActivation());
-	}
 }
 
 int main() {
-	NerousNetworkDLL::NerousNetwork ns(2, 2, 4, new NerousNetworkDLL::Methods::MORMethod(), GenerateNS);
+	NerousNetworkDLL::NerousNetwork ns(6, 1, 11, new NerousNetworkDLL::Methods::MORMethod(), GenerateNS);
 	float trainSet[][4][2]{ {{0,0},{0,0}}, {{0,1},{1,0}}, {{1,0},{1,0}}, {{1,1},{0,1}} };
 	float *** train = new float**[4];
 	for (int i = 0; i < 4; i++) {
