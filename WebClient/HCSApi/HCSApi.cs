@@ -14,5 +14,6 @@ namespace CommonLibrary.Databases
         }
 
         public DbSet<House> House { get; set; }
+        public DbSet<Company> Companies { get; set; }
     }
 }

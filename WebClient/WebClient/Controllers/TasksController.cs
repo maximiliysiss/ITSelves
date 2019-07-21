@@ -23,7 +23,8 @@ namespace WebClient.Controllers
         {
             if (!this.IsAuth())
                 return RedirectToAction("Index", "Auth");
-            return View(await NetConnection.LoadObjectByGet<List<CommonLibrary.Models.Task>>("/Tasks") ?? new List<CommonLibrary.Models.Task>());
+            return View(await NetConnection.LoadObjectByGet<List<CommonLibrary.Models.Task>>("/Tasks", token: HttpContext.Session.GetString("Token"))
+                ?? new List<CommonLibrary.Models.Task>());
         }
 
         // GET: Tasks/Details/5
@@ -42,7 +43,7 @@ namespace WebClient.Controllers
                 return NotFound();
             }
 
-            return View(task);
+            return View("Create", task);
         }
 
         // GET: Tasks/Create
@@ -50,8 +51,9 @@ namespace WebClient.Controllers
         {
             if (!this.IsAuth())
                 return RedirectToAction("Index", "Auth");
+            ViewBag.User = this.GetUserByToken(HttpContext.Session.GetString("Token")).Name;
             ViewBag.Workers = await NetWorkers.LoadObjectByGet<List<Worker>>("/worker/", "", HttpContext.Session.GetString("Token"));
-            return View();
+            return View(new CommonLibrary.Models.Task());
         }
 
         [HttpPost]

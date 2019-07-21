@@ -14,5 +14,10 @@ namespace CommonLibrary.Models
     public class Worker : User
     {
         public Category Category { get; set; }
+
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 }

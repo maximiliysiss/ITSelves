@@ -37,5 +37,10 @@ namespace CommonActionsWeb
                 return false;
             return true;
         }
+
+        public static bool In<T>(this T obj, List<T> data)
+        {
+            return data.Contains(obj);
+        }
     }
 }

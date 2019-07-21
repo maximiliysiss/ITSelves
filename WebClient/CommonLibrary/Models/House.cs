@@ -12,5 +12,10 @@ namespace CommonLibrary.Models
         public string City { get; set; }
         public string Area { get; set; }
         public string Index { get; set; }
+
+        public override string ToString()
+        {
+            return $"{Area}, {Street}, {HouseNumber}";
+        }
     }
 }

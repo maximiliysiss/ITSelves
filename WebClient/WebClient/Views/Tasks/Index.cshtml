@@ -11,31 +11,28 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.DateTime)
+                Дата исполнения
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Name)
+                Наименование
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.TaskStatus)
+                Статус
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Description)
+                Описание
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Category)
+                Тип работ
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.House)
+                Дом
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Worker)
+                Исполнитель
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Rate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Comment)
+                Рейтинг
             </th>
             <th></th>
         </tr>
@@ -43,33 +40,34 @@
     <tbody>
         @foreach (var item in Model)
         {
+            var house = await new CommonActions.NetConnection { BaseURL = CommonActions.Configuration.URLS["HCS"] }
+                .LoadObjectByGet<CommonLibrary.Models.House>($"/Houses/{item.House}", token: Context.Session.GetString("Token"));
+            var worker = await new CommonActions.NetConnection { BaseURL = CommonActions.Configuration.URLS["Auth"] }
+                .LoadObjectByGet<CommonLibrary.Models.Worker>($"/worker/{item.Worker}", token: Context.Session.GetString("Token"));
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.DateTime)
+                    @item.DateTime.ToShortDateString()
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Name)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.TaskStatus)
+                    @(item.TaskStatus != null ? CommonLibrary.GetRus.RuTaskStatus[item.TaskStatus.Value] : "Создано";
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Description)
+                    @Html.DisplayFor(modelItem => item.ShortName)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Category)
+                    @CommonLibrary.GetRus.RuCategory[item.Category]
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.House)
+                    @house.ToString()
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Worker)
+                    @worker.ToString()
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Rate)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Comment)
                 </td>
                 <td>
                     <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
