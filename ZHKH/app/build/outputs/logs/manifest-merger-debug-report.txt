@@ -1,0 +1,206 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /Users/evgeny/Documents/ITSelves/ZHKH/app/src/main/AndroidManifest.xml:2:1-28:12
+INJECTED from /Users/evgeny/Documents/ITSelves/ZHKH/app/src/main/AndroidManifest.xml:2:1-28:12
+INJECTED from /Users/evgeny/Documents/ITSelves/ZHKH/app/src/main/AndroidManifest.xml:2:1-28:12
+INJECTED from /Users/evgeny/Documents/ITSelves/ZHKH/app/src/main/AndroidManifest.xml:2:1-28:12
+MERGED from [com.riontech:calendar:1.0] /Users/evgeny/.gradle/caches/transforms-2/files-2.1/6eb3d04564ce2d59af1eaeafdc66b5f3/AndroidManifest.xml:2:1-18:12
+MERGED from [com.android.support:design:28.0.0] /Users/evgeny/.gradle/caches/transforms-2/files-2.1/aa39d241fb32a0f24e2dde3b37f707eb/AndroidManifest.xml:17:1-24:12
+MERGED from [com.android.support:appcompat-v7:28.0.0] /Users/evgeny/.gradle/caches/transforms-2/files-2.1/870d7dc14e1edc875b4b1418dfe61094/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.navigation:navigation-fragment:1.0.0] /Users/evgeny/.gradle/caches/transforms-2/files-2.1/d49ec0812c5e97c7ede8a45270271716/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] /Users/evgeny/.gradle/caches/transforms-2/files-2.1/5e89ed8bf0deac926cb2610266f43067/AndroidManifest.xml:2:1-11:12
+MERGED from [com.android.support:support-v4:28.0.0] /Users/evgeny/.gradle/caches/transforms-2/files-2.1/060fb0e6e7ebad63009725451b4ef662/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-fragment:28.0.0] /Users/evgeny/.gradle/caches/transforms-2/files-2.1/5d7dd48a6564d028fa1dbe1b1ab44a6a/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:animated-vector-drawable:28.0.0] /Users/evgeny/.gradle/caches/transforms-2/files-2.1/13c714ae07474ba58957c48d5dd0dd65/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:recyclerview-v7:28.0.0] /Users/evgeny/.gradle/caches/transforms-2/files-2.1/9f4b9bdfed0a9cae820d8ce2efb57761/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-ui:28.0.0] /Users/evgeny/.gradle/caches/transforms-2/files-2.1/2fdc3f5eabc31459c4d6356e9691caf9/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.navigation:navigation-runtime:1.0.0] /Users/evgeny/.gradle/caches/transforms-2/files-2.1/c28413da0326bdedfcac1ce8be6e98ee/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-utils:28.0.0] /Users/evgeny/.gradle/caches/transforms-2/files-2.1/9b8b493da7b90f2b1b91d77c88036f0b/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-vector-drawable:28.0.0] /Users/evgeny/.gradle/caches/transforms-2/files-2.1/9b1f1e9f1e16e9a0b2f828acf4f7cbee/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:transition:28.0.0] /Users/evgeny/.gradle/caches/transforms-2/files-2.1/13d570c897a596c2e1f4673ad9693012/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-media-compat:28.0.0] /Users/evgeny/.gradle/caches/transforms-2/files-2.1/046d535e11aaa615dbe1aaec7a13f680/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:loader:28.0.0] /Users/evgeny/.gradle/caches/transforms-2/files-2.1/f7125e88ed4e953b7218598b0d61661c/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:viewpager:28.0.0] /Users/evgeny/.gradle/caches/transforms-2/files-2.1/b4e652f89f6df30e712b0b0f226984cb/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:coordinatorlayout:28.0.0] /Users/evgeny/.gradle/caches/transforms-2/files-2.1/0e08bbf66a5d9afe15e2f32ba8c3770e/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:drawerlayout:28.0.0] /Users/evgeny/.gradle/caches/transforms-2/files-2.1/16faf85f9dfaf41b5f82cf6788b576f4/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:slidingpanelayout:28.0.0] /Users/evgeny/.gradle/caches/transforms-2/files-2.1/6d2e80d494b75c1528a89b1658c4bac3/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:customview:28.0.0] /Users/evgeny/.gradle/caches/transforms-2/files-2.1/3d05872e82c3a7921c7cae6fa97dbecf/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:swiperefreshlayout:28.0.0] /Users/evgeny/.gradle/caches/transforms-2/files-2.1/a2a4500374a5cc2d30b787f45eca0d6b/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:asynclayoutinflater:28.0.0] /Users/evgeny/.gradle/caches/transforms-2/files-2.1/6c6ba04df857f1d9c487ea3c9eec845c/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.navigation:navigation-common:1.0.0] /Users/evgeny/.gradle/caches/transforms-2/files-2.1/91b7034e336e176cc618423e87d6eb0a/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-compat:28.0.0] /Users/evgeny/.gradle/caches/transforms-2/files-2.1/704d993c2b669b0d0e77d1f772caeb32/AndroidManifest.xml:17:1-24:12
+MERGED from [com.android.support:versionedparcelable:28.0.0] /Users/evgeny/.gradle/caches/transforms-2/files-2.1/d803cb392940b34ffb93cce360ee21c7/AndroidManifest.xml:17:1-25:12
+MERGED from [com.android.support:cursoradapter:28.0.0] /Users/evgeny/.gradle/caches/transforms-2/files-2.1/e6be1d1b4d0ab3ded5a372b9d2ba56ba/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:cardview-v7:28.0.0] /Users/evgeny/.gradle/caches/transforms-2/files-2.1/a104539bc76920ab9981fbcb617ccb8c/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:runtime:1.1.1] /Users/evgeny/.gradle/caches/transforms-2/files-2.1/5797fe64f99328053e51339ec0b9da70/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:documentfile:28.0.0] /Users/evgeny/.gradle/caches/transforms-2/files-2.1/283f85b1a7780c9c4dce79cba1424ece/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:localbroadcastmanager:28.0.0] /Users/evgeny/.gradle/caches/transforms-2/files-2.1/3f4e057d175059999ca41800ca29e716/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:print:28.0.0] /Users/evgeny/.gradle/caches/transforms-2/files-2.1/b89289543f7e1369ad0368d876163a8b/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:viewmodel:1.1.1] /Users/evgeny/.gradle/caches/transforms-2/files-2.1/ef988ea10c057326004b4fda844bfc34/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:interpolator:28.0.0] /Users/evgeny/.gradle/caches/transforms-2/files-2.1/5d1b48651f40c940c6c13bfb48a3fe65/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:livedata:1.1.1] /Users/evgeny/.gradle/caches/transforms-2/files-2.1/09235bab38809058f4e945051972e3c4/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:livedata-core:1.1.1] /Users/evgeny/.gradle/caches/transforms-2/files-2.1/d4b3d66fb5dfe4989e47aadc6dd692bc/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.core:runtime:1.1.1] /Users/evgeny/.gradle/caches/transforms-2/files-2.1/2b0949715a4abac21979d0bcba48dfdb/AndroidManifest.xml:17:1-22:12
+INJECTED from /Users/evgeny/Documents/ITSelves/ZHKH/app/src/main/AndroidManifest.xml:2:1-28:12
+INJECTED from /Users/evgeny/Documents/ITSelves/ZHKH/app/src/main/AndroidManifest.xml:2:1-28:12
+INJECTED from /Users/evgeny/Documents/ITSelves/ZHKH/app/src/main/AndroidManifest.xml:2:1-28:12
+	package
+		ADDED from /Users/evgeny/Documents/ITSelves/ZHKH/app/src/main/AndroidManifest.xml:3:5-31
+		INJECTED from /Users/evgeny/Documents/ITSelves/ZHKH/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/evgeny/Documents/ITSelves/ZHKH/app/src/main/AndroidManifest.xml
+	android:versionName
+		INJECTED from /Users/evgeny/Documents/ITSelves/ZHKH/app/src/main/AndroidManifest.xml
+		ADDED from /Users/evgeny/Documents/ITSelves/ZHKH/app/src/main/AndroidManifest.xml:2:1-28:12
+		INJECTED from /Users/evgeny/Documents/ITSelves/ZHKH/app/src/main/AndroidManifest.xml
+	android:versionCode
+		INJECTED from /Users/evgeny/Documents/ITSelves/ZHKH/app/src/main/AndroidManifest.xml
+		ADDED from /Users/evgeny/Documents/ITSelves/ZHKH/app/src/main/AndroidManifest.xml:2:1-28:12
+		INJECTED from /Users/evgeny/Documents/ITSelves/ZHKH/app/src/main/AndroidManifest.xml
+	xmlns:android
+		ADDED from /Users/evgeny/Documents/ITSelves/ZHKH/app/src/main/AndroidManifest.xml:2:11-69
+uses-permission#android.permission.INTERNET
+ADDED from /Users/evgeny/Documents/ITSelves/ZHKH/app/src/main/AndroidManifest.xml:4:5-66
+	android:name
+		ADDED from /Users/evgeny/Documents/ITSelves/ZHKH/app/src/main/AndroidManifest.xml:4:22-64
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from /Users/evgeny/Documents/ITSelves/ZHKH/app/src/main/AndroidManifest.xml:5:5-78
+	android:name
+		ADDED from /Users/evgeny/Documents/ITSelves/ZHKH/app/src/main/AndroidManifest.xml:5:22-76
+application
+ADDED from /Users/evgeny/Documents/ITSelves/ZHKH/app/src/main/AndroidManifest.xml:6:5-26:19
+MERGED from [com.riontech:calendar:1.0] /Users/evgeny/.gradle/caches/transforms-2/files-2.1/6eb3d04564ce2d59af1eaeafdc66b5f3/AndroidManifest.xml:11:5-16:19
+MERGED from [com.riontech:calendar:1.0] /Users/evgeny/.gradle/caches/transforms-2/files-2.1/6eb3d04564ce2d59af1eaeafdc66b5f3/AndroidManifest.xml:11:5-16:19
+MERGED from [com.android.support:design:28.0.0] /Users/evgeny/.gradle/caches/transforms-2/files-2.1/aa39d241fb32a0f24e2dde3b37f707eb/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design:28.0.0] /Users/evgeny/.gradle/caches/transforms-2/files-2.1/aa39d241fb32a0f24e2dde3b37f707eb/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] /Users/evgeny/.gradle/caches/transforms-2/files-2.1/5e89ed8bf0deac926cb2610266f43067/AndroidManifest.xml:9:5-20
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] /Users/evgeny/.gradle/caches/transforms-2/files-2.1/5e89ed8bf0deac926cb2610266f43067/AndroidManifest.xml:9:5-20
+MERGED from [com.android.support:support-compat:28.0.0] /Users/evgeny/.gradle/caches/transforms-2/files-2.1/704d993c2b669b0d0e77d1f772caeb32/AndroidManifest.xml:22:5-94
+MERGED from [com.android.support:support-compat:28.0.0] /Users/evgeny/.gradle/caches/transforms-2/files-2.1/704d993c2b669b0d0e77d1f772caeb32/AndroidManifest.xml:22:5-94
+MERGED from [com.android.support:versionedparcelable:28.0.0] /Users/evgeny/.gradle/caches/transforms-2/files-2.1/d803cb392940b34ffb93cce360ee21c7/AndroidManifest.xml:22:5-23:19
+MERGED from [com.android.support:versionedparcelable:28.0.0] /Users/evgeny/.gradle/caches/transforms-2/files-2.1/d803cb392940b34ffb93cce360ee21c7/AndroidManifest.xml:22:5-23:19
+	android:appComponentFactory
+		ADDED from [com.android.support:support-compat:28.0.0] /Users/evgeny/.gradle/caches/transforms-2/files-2.1/704d993c2b669b0d0e77d1f772caeb32/AndroidManifest.xml:22:18-91
+	android:supportsRtl
+		ADDED from /Users/evgeny/Documents/ITSelves/ZHKH/app/src/main/AndroidManifest.xml:11:9-35
+	android:label
+		ADDED from /Users/evgeny/Documents/ITSelves/ZHKH/app/src/main/AndroidManifest.xml:9:9-41
+	android:roundIcon
+		ADDED from /Users/evgeny/Documents/ITSelves/ZHKH/app/src/main/AndroidManifest.xml:10:9-54
+	android:icon
+		ADDED from /Users/evgeny/Documents/ITSelves/ZHKH/app/src/main/AndroidManifest.xml:8:9-43
+	android:allowBackup
+		ADDED from /Users/evgeny/Documents/ITSelves/ZHKH/app/src/main/AndroidManifest.xml:7:9-35
+	android:theme
+		ADDED from /Users/evgeny/Documents/ITSelves/ZHKH/app/src/main/AndroidManifest.xml:13:9-40
+	android:usesCleartextTraffic
+		ADDED from /Users/evgeny/Documents/ITSelves/ZHKH/app/src/main/AndroidManifest.xml:12:9-44
+activity#com.example.zhkh.LogScreenActivity
+ADDED from /Users/evgeny/Documents/ITSelves/ZHKH/app/src/main/AndroidManifest.xml:14:9-20:20
+	android:name
+		ADDED from /Users/evgeny/Documents/ITSelves/ZHKH/app/src/main/AndroidManifest.xml:14:19-52
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from /Users/evgeny/Documents/ITSelves/ZHKH/app/src/main/AndroidManifest.xml:15:13-19:29
+action#android.intent.action.MAIN
+ADDED from /Users/evgeny/Documents/ITSelves/ZHKH/app/src/main/AndroidManifest.xml:16:17-69
+	android:name
+		ADDED from /Users/evgeny/Documents/ITSelves/ZHKH/app/src/main/AndroidManifest.xml:16:25-66
+category#android.intent.category.LAUNCHER
+ADDED from /Users/evgeny/Documents/ITSelves/ZHKH/app/src/main/AndroidManifest.xml:18:17-77
+	android:name
+		ADDED from /Users/evgeny/Documents/ITSelves/ZHKH/app/src/main/AndroidManifest.xml:18:27-74
+activity#com.example.zhkh.MainActivity
+ADDED from /Users/evgeny/Documents/ITSelves/ZHKH/app/src/main/AndroidManifest.xml:21:9-25:20
+	android:label
+		ADDED from /Users/evgeny/Documents/ITSelves/ZHKH/app/src/main/AndroidManifest.xml:23:13-45
+	android:windowSoftInputMode
+		ADDED from /Users/evgeny/Documents/ITSelves/ZHKH/app/src/main/AndroidManifest.xml:24:13-52
+	android:name
+		ADDED from /Users/evgeny/Documents/ITSelves/ZHKH/app/src/main/AndroidManifest.xml:22:13-41
+uses-sdk
+INJECTED from /Users/evgeny/Documents/ITSelves/ZHKH/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /Users/evgeny/Documents/ITSelves/ZHKH/app/src/main/AndroidManifest.xml
+INJECTED from /Users/evgeny/Documents/ITSelves/ZHKH/app/src/main/AndroidManifest.xml
+MERGED from [com.riontech:calendar:1.0] /Users/evgeny/.gradle/caches/transforms-2/files-2.1/6eb3d04564ce2d59af1eaeafdc66b5f3/AndroidManifest.xml:7:5-9:41
+MERGED from [com.riontech:calendar:1.0] /Users/evgeny/.gradle/caches/transforms-2/files-2.1/6eb3d04564ce2d59af1eaeafdc66b5f3/AndroidManifest.xml:7:5-9:41
+MERGED from [com.android.support:design:28.0.0] /Users/evgeny/.gradle/caches/transforms-2/files-2.1/aa39d241fb32a0f24e2dde3b37f707eb/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design:28.0.0] /Users/evgeny/.gradle/caches/transforms-2/files-2.1/aa39d241fb32a0f24e2dde3b37f707eb/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:appcompat-v7:28.0.0] /Users/evgeny/.gradle/caches/transforms-2/files-2.1/870d7dc14e1edc875b4b1418dfe61094/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:appcompat-v7:28.0.0] /Users/evgeny/.gradle/caches/transforms-2/files-2.1/870d7dc14e1edc875b4b1418dfe61094/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.navigation:navigation-fragment:1.0.0] /Users/evgeny/.gradle/caches/transforms-2/files-2.1/d49ec0812c5e97c7ede8a45270271716/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.navigation:navigation-fragment:1.0.0] /Users/evgeny/.gradle/caches/transforms-2/files-2.1/d49ec0812c5e97c7ede8a45270271716/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] /Users/evgeny/.gradle/caches/transforms-2/files-2.1/5e89ed8bf0deac926cb2610266f43067/AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] /Users/evgeny/.gradle/caches/transforms-2/files-2.1/5e89ed8bf0deac926cb2610266f43067/AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support:support-v4:28.0.0] /Users/evgeny/.gradle/caches/transforms-2/files-2.1/060fb0e6e7ebad63009725451b4ef662/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-v4:28.0.0] /Users/evgeny/.gradle/caches/transforms-2/files-2.1/060fb0e6e7ebad63009725451b4ef662/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-fragment:28.0.0] /Users/evgeny/.gradle/caches/transforms-2/files-2.1/5d7dd48a6564d028fa1dbe1b1ab44a6a/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-fragment:28.0.0] /Users/evgeny/.gradle/caches/transforms-2/files-2.1/5d7dd48a6564d028fa1dbe1b1ab44a6a/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:28.0.0] /Users/evgeny/.gradle/caches/transforms-2/files-2.1/13c714ae07474ba58957c48d5dd0dd65/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:28.0.0] /Users/evgeny/.gradle/caches/transforms-2/files-2.1/13c714ae07474ba58957c48d5dd0dd65/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:recyclerview-v7:28.0.0] /Users/evgeny/.gradle/caches/transforms-2/files-2.1/9f4b9bdfed0a9cae820d8ce2efb57761/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:recyclerview-v7:28.0.0] /Users/evgeny/.gradle/caches/transforms-2/files-2.1/9f4b9bdfed0a9cae820d8ce2efb57761/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:28.0.0] /Users/evgeny/.gradle/caches/transforms-2/files-2.1/2fdc3f5eabc31459c4d6356e9691caf9/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:28.0.0] /Users/evgeny/.gradle/caches/transforms-2/files-2.1/2fdc3f5eabc31459c4d6356e9691caf9/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.navigation:navigation-runtime:1.0.0] /Users/evgeny/.gradle/caches/transforms-2/files-2.1/c28413da0326bdedfcac1ce8be6e98ee/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.navigation:navigation-runtime:1.0.0] /Users/evgeny/.gradle/caches/transforms-2/files-2.1/c28413da0326bdedfcac1ce8be6e98ee/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:28.0.0] /Users/evgeny/.gradle/caches/transforms-2/files-2.1/9b8b493da7b90f2b1b91d77c88036f0b/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:28.0.0] /Users/evgeny/.gradle/caches/transforms-2/files-2.1/9b8b493da7b90f2b1b91d77c88036f0b/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:28.0.0] /Users/evgeny/.gradle/caches/transforms-2/files-2.1/9b1f1e9f1e16e9a0b2f828acf4f7cbee/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:28.0.0] /Users/evgeny/.gradle/caches/transforms-2/files-2.1/9b1f1e9f1e16e9a0b2f828acf4f7cbee/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:transition:28.0.0] /Users/evgeny/.gradle/caches/transforms-2/files-2.1/13d570c897a596c2e1f4673ad9693012/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:transition:28.0.0] /Users/evgeny/.gradle/caches/transforms-2/files-2.1/13d570c897a596c2e1f4673ad9693012/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-media-compat:28.0.0] /Users/evgeny/.gradle/caches/transforms-2/files-2.1/046d535e11aaa615dbe1aaec7a13f680/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-media-compat:28.0.0] /Users/evgeny/.gradle/caches/transforms-2/files-2.1/046d535e11aaa615dbe1aaec7a13f680/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:loader:28.0.0] /Users/evgeny/.gradle/caches/transforms-2/files-2.1/f7125e88ed4e953b7218598b0d61661c/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:loader:28.0.0] /Users/evgeny/.gradle/caches/transforms-2/files-2.1/f7125e88ed4e953b7218598b0d61661c/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:viewpager:28.0.0] /Users/evgeny/.gradle/caches/transforms-2/files-2.1/b4e652f89f6df30e712b0b0f226984cb/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:viewpager:28.0.0] /Users/evgeny/.gradle/caches/transforms-2/files-2.1/b4e652f89f6df30e712b0b0f226984cb/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:coordinatorlayout:28.0.0] /Users/evgeny/.gradle/caches/transforms-2/files-2.1/0e08bbf66a5d9afe15e2f32ba8c3770e/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:coordinatorlayout:28.0.0] /Users/evgeny/.gradle/caches/transforms-2/files-2.1/0e08bbf66a5d9afe15e2f32ba8c3770e/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:drawerlayout:28.0.0] /Users/evgeny/.gradle/caches/transforms-2/files-2.1/16faf85f9dfaf41b5f82cf6788b576f4/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:drawerlayout:28.0.0] /Users/evgeny/.gradle/caches/transforms-2/files-2.1/16faf85f9dfaf41b5f82cf6788b576f4/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:slidingpanelayout:28.0.0] /Users/evgeny/.gradle/caches/transforms-2/files-2.1/6d2e80d494b75c1528a89b1658c4bac3/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:slidingpanelayout:28.0.0] /Users/evgeny/.gradle/caches/transforms-2/files-2.1/6d2e80d494b75c1528a89b1658c4bac3/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:customview:28.0.0] /Users/evgeny/.gradle/caches/transforms-2/files-2.1/3d05872e82c3a7921c7cae6fa97dbecf/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:customview:28.0.0] /Users/evgeny/.gradle/caches/transforms-2/files-2.1/3d05872e82c3a7921c7cae6fa97dbecf/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:swiperefreshlayout:28.0.0] /Users/evgeny/.gradle/caches/transforms-2/files-2.1/a2a4500374a5cc2d30b787f45eca0d6b/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:swiperefreshlayout:28.0.0] /Users/evgeny/.gradle/caches/transforms-2/files-2.1/a2a4500374a5cc2d30b787f45eca0d6b/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:asynclayoutinflater:28.0.0] /Users/evgeny/.gradle/caches/transforms-2/files-2.1/6c6ba04df857f1d9c487ea3c9eec845c/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:asynclayoutinflater:28.0.0] /Users/evgeny/.gradle/caches/transforms-2/files-2.1/6c6ba04df857f1d9c487ea3c9eec845c/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.navigation:navigation-common:1.0.0] /Users/evgeny/.gradle/caches/transforms-2/files-2.1/91b7034e336e176cc618423e87d6eb0a/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.navigation:navigation-common:1.0.0] /Users/evgeny/.gradle/caches/transforms-2/files-2.1/91b7034e336e176cc618423e87d6eb0a/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:28.0.0] /Users/evgeny/.gradle/caches/transforms-2/files-2.1/704d993c2b669b0d0e77d1f772caeb32/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:28.0.0] /Users/evgeny/.gradle/caches/transforms-2/files-2.1/704d993c2b669b0d0e77d1f772caeb32/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:versionedparcelable:28.0.0] /Users/evgeny/.gradle/caches/transforms-2/files-2.1/d803cb392940b34ffb93cce360ee21c7/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:versionedparcelable:28.0.0] /Users/evgeny/.gradle/caches/transforms-2/files-2.1/d803cb392940b34ffb93cce360ee21c7/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:cursoradapter:28.0.0] /Users/evgeny/.gradle/caches/transforms-2/files-2.1/e6be1d1b4d0ab3ded5a372b9d2ba56ba/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:cursoradapter:28.0.0] /Users/evgeny/.gradle/caches/transforms-2/files-2.1/e6be1d1b4d0ab3ded5a372b9d2ba56ba/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:cardview-v7:28.0.0] /Users/evgeny/.gradle/caches/transforms-2/files-2.1/a104539bc76920ab9981fbcb617ccb8c/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:cardview-v7:28.0.0] /Users/evgeny/.gradle/caches/transforms-2/files-2.1/a104539bc76920ab9981fbcb617ccb8c/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.1.1] /Users/evgeny/.gradle/caches/transforms-2/files-2.1/5797fe64f99328053e51339ec0b9da70/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.1.1] /Users/evgeny/.gradle/caches/transforms-2/files-2.1/5797fe64f99328053e51339ec0b9da70/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:documentfile:28.0.0] /Users/evgeny/.gradle/caches/transforms-2/files-2.1/283f85b1a7780c9c4dce79cba1424ece/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:documentfile:28.0.0] /Users/evgeny/.gradle/caches/transforms-2/files-2.1/283f85b1a7780c9c4dce79cba1424ece/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:localbroadcastmanager:28.0.0] /Users/evgeny/.gradle/caches/transforms-2/files-2.1/3f4e057d175059999ca41800ca29e716/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:localbroadcastmanager:28.0.0] /Users/evgeny/.gradle/caches/transforms-2/files-2.1/3f4e057d175059999ca41800ca29e716/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:print:28.0.0] /Users/evgeny/.gradle/caches/transforms-2/files-2.1/b89289543f7e1369ad0368d876163a8b/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:print:28.0.0] /Users/evgeny/.gradle/caches/transforms-2/files-2.1/b89289543f7e1369ad0368d876163a8b/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:viewmodel:1.1.1] /Users/evgeny/.gradle/caches/transforms-2/files-2.1/ef988ea10c057326004b4fda844bfc34/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:viewmodel:1.1.1] /Users/evgeny/.gradle/caches/transforms-2/files-2.1/ef988ea10c057326004b4fda844bfc34/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:interpolator:28.0.0] /Users/evgeny/.gradle/caches/transforms-2/files-2.1/5d1b48651f40c940c6c13bfb48a3fe65/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:interpolator:28.0.0] /Users/evgeny/.gradle/caches/transforms-2/files-2.1/5d1b48651f40c940c6c13bfb48a3fe65/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata:1.1.1] /Users/evgeny/.gradle/caches/transforms-2/files-2.1/09235bab38809058f4e945051972e3c4/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata:1.1.1] /Users/evgeny/.gradle/caches/transforms-2/files-2.1/09235bab38809058f4e945051972e3c4/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata-core:1.1.1] /Users/evgeny/.gradle/caches/transforms-2/files-2.1/d4b3d66fb5dfe4989e47aadc6dd692bc/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata-core:1.1.1] /Users/evgeny/.gradle/caches/transforms-2/files-2.1/d4b3d66fb5dfe4989e47aadc6dd692bc/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.core:runtime:1.1.1] /Users/evgeny/.gradle/caches/transforms-2/files-2.1/2b0949715a4abac21979d0bcba48dfdb/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.core:runtime:1.1.1] /Users/evgeny/.gradle/caches/transforms-2/files-2.1/2b0949715a4abac21979d0bcba48dfdb/AndroidManifest.xml:20:5-44
+INJECTED from /Users/evgeny/Documents/ITSelves/ZHKH/app/src/main/AndroidManifest.xml
+INJECTED from /Users/evgeny/Documents/ITSelves/ZHKH/app/src/main/AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from /Users/evgeny/Documents/ITSelves/ZHKH/app/src/main/AndroidManifest.xml
+		ADDED from /Users/evgeny/Documents/ITSelves/ZHKH/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/evgeny/Documents/ITSelves/ZHKH/app/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /Users/evgeny/Documents/ITSelves/ZHKH/app/src/main/AndroidManifest.xml
+		ADDED from /Users/evgeny/Documents/ITSelves/ZHKH/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/evgeny/Documents/ITSelves/ZHKH/app/src/main/AndroidManifest.xml

@@ -1,0 +1,7 @@
+#Sun Jul 21 16:07:02 MSK 2019
+base.0=/Users/evgeny/Documents/ITSelves/ZHKH/app/build/intermediates/dex/debug/mergeExtDexDebug/out
+path.1=classes.dex
+renamed.1=classes2.dex
+path.0=classes.dex
+renamed.0=classes.dex
+base.1=/Users/evgeny/Documents/ITSelves/ZHKH/app/build/intermediates/dex/debug/mergeProjectDexDebug/out
