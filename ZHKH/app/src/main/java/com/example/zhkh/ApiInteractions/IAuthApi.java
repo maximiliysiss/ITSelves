@@ -1,6 +1,7 @@
 package com.example.zhkh.ApiInteractions;
 
 import com.example.zhkh.ApiInteractions.pojoes.Key;
+import com.example.zhkh.ApiInteractions.pojoes.RawTask;
 import com.example.zhkh.ApiInteractions.pojoes.Schedule;
 import com.example.zhkh.ApiInteractions.pojoes.Task;
 import com.example.zhkh.ApiInteractions.pojoes.Token;
@@ -28,4 +29,7 @@ public interface IAuthApi
 
     @GET("schedules")
     Call<List<Schedule>> getSchedule(@Header("token")String token);
+
+    @POST("tasks/sendTask")
+    Call<Token> sendTask(@Body RawTask rawTask);
 }
