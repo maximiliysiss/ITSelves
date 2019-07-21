@@ -17,7 +17,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Entity()
  */
-class Operator extends Worker
+class Operator extends AbstractUser
 {
     /**
      * @return string
