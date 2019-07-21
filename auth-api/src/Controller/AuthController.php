@@ -172,6 +172,7 @@ class AuthController extends AbstractController
      * @return JsonResponse
      *
      * @throws \Exception
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function verifyTokenAction(VerifyTokenRequest $request)
     {

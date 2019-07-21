@@ -32,6 +32,13 @@ class User extends AbstractUser
     protected $addressId;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(type="text")
+     */
+    protected $photo;
+
+    /**
      * User constructor.
      *
      * @param string $name
@@ -82,5 +89,33 @@ class User extends AbstractUser
     public function getRole()
     {
         return 'ROLE_USER';
+    }
+
+    /**
+     * @return bool
+     */
+    public function havePhoto()
+    {
+        return $this->getPhoto() !== null;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPhoto(): string
+    {
+        return $this->photo;
+    }
+
+    /**
+     * @param string $photo
+     *
+     * @return User
+     */
+    public function setPhoto(string $photo): User
+    {
+        $this->photo = $photo;
+
+        return $this;
     }
 }
