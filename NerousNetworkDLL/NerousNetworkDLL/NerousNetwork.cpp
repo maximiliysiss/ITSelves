@@ -68,7 +68,7 @@ namespace NerousNetworkDLL
 	{
 		load();
 		auto e = 0.01;
-		float temp_mses[4]{ 0 };
+		float *temp_mses = new float[count];
 		float temp_cost = 0;
 		do {
 			for (int i = 0; i < count; i++) {
