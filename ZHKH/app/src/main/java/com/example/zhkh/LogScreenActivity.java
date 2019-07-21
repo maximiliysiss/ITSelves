@@ -1,9 +1,17 @@
 package com.example.zhkh;
 
 import android.support.v7.app.AppCompatActivity;
+
+
+
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,7 +32,11 @@ import retrofit2.Response;
 public class LogScreenActivity extends AppCompatActivity {
 
     private TextView passField;
+    private Button passBut;
     private String tok;
+    public static final String APP_PREFERENCES = "mysettings";
+    public static final String APP_PREFERENCES_COUNTER = "key";
+    private SharedPreferences mSettings;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -32,12 +44,30 @@ public class LogScreenActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log_screen);
         passField = (TextView)findViewById(R.id.passwordField);
+        passBut = (Button)findViewById(R.id.passwordButton);
+        mSettings = getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
+        String keyst = "";
+        if (mSettings.contains(APP_PREFERENCES_COUNTER)) {
+            // Получаем число из настроек
+            keyst = mSettings.getString(APP_PREFERENCES_COUNTER, "key");
+            // Выводим на экран данные из настроек
+            passField.setText(keyst);
+            passBut.performClick();
+            }
+
+    }
+
+    public void onPasswordButClick(View view) throws InterruptedException {
+
+TimeUnit.SECONDS.sleep(10);
+        final SharedPreferences.Editor editor = mSettings.edit();
 
         ApiWorker aw = new ApiWorker("http://85.143.10.92:8001/");
         IAuthApi login = aw.getLog();
 
         Key key = new Key();
-        key.setKey("5858-1678-c864-807b");
+        key.setKey(passField.getText().toString());
+        editor.putString(APP_PREFERENCES_COUNTER, key.getKey());
 
         login.getAuth(key).enqueue(new Callback<Token>()
         {
@@ -53,6 +83,11 @@ public class LogScreenActivity extends AppCompatActivity {
                 tok = response.body().getToken();
                 Singleton.getInstance().setToken(tok);
                 System.out.println("Success! "+tok);
+
+                editor.apply();
+
+                Intent intent = new Intent(LogScreenActivity.this, MainActivity.class);
+                startActivity(intent);
             }
 
             @Override
@@ -62,35 +97,8 @@ public class LogScreenActivity extends AppCompatActivity {
             }
 
         });
-    }
 
-    public void onPasswordButClick(View view) throws InterruptedException {
 
-        ApiWorker awt = new ApiWorker("http://85.143.11.233:8000/");
-
-        IAuthApi taskApi = awt.getLog();
-        taskApi.getTask(Singleton.getInstance().getToken()).enqueue(new Callback<List<Task>>()
-        {
-
-            @Override
-            public void onResponse(Call<List<Task>> call, Response<List<Task>> response)
-            {
-                if(!response.isSuccessful())
-                {
-                    System.out.println("We got some troubles. But server is okay");
-                    return;
-                }
-                Singleton.getInstance().setTaskList(response.body());
-                int i = 5;
-            }
-
-            @Override
-            public void onFailure(Call<List<Task>> call, Throwable t)
-            {
-                System.out.println(t.getMessage());
-            }
-
-        });
     }
 
 }

@@ -49,21 +49,50 @@ public class OpenTaskFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(LAYOUT, container, false);
-        try {
-            ListView lv = (ListView) view.findViewById(R.id.taskList);
-            ArrayList<Task> taskList = (ArrayList<Task>) Singleton.getInstance().getTaskList();
-            for (int i = 0; i < taskList.size(); i++) {
-                Task temp = taskList.get(i);
-                if (temp.getTaskStatus() != 0 || temp.getTaskStatus() != 1) {
-                    taskList.remove(i);
+
+                ApiWorker awt = new ApiWorker("http://85.143.11.233:8000/");
+
+        IAuthApi taskApi = awt.getLog();
+        taskApi.getTask(Singleton.getInstance().getToken()).enqueue(new Callback<List<Task>>()
+        {
+
+            @Override
+            public void onResponse(Call<List<Task>> call, Response<List<Task>> response)
+            {
+                if(!response.isSuccessful())
+                {
+                    System.out.println("We got some troubles. But server is okay");
+                    return;
                 }
+                Singleton.getInstance().setTaskList(response.body());
+
+                try {
+                    ListView lv = (ListView) view.findViewById(R.id.taskList);
+                    ArrayList<Task> taskList = (ArrayList<Task>) Singleton.getInstance().getTaskList();
+                    for (int i = 0; i < taskList.size(); i++) {
+                        Task temp = taskList.get(i);
+                        if (temp.getTaskStatus() != 0 || temp.getTaskStatus() != 1) {
+                            taskList.remove(i);
+                        }
+                    }
+                    ListTaskAdapter adapter = new ListTaskAdapter(view.getContext(), R.layout.item_event, taskList);
+                    lv.setAdapter(adapter);
+                }
+                catch (Exception e){
+                    e.printStackTrace();
             }
-            ListTaskAdapter adapter = new ListTaskAdapter(view.getContext(), R.layout.item_event, taskList);
-            lv.setAdapter(adapter);
-        }
-        catch (Exception e){
-            e.printStackTrace();
-        }
+            }
+
+            @Override
+            public void onFailure(Call<List<Task>> call, Throwable t)
+            {
+                System.out.println(t.getMessage());
+            }
+
+        });
+
+
+
         return view;
     }
 }
