@@ -21,6 +21,7 @@ import com.example.zhkh.ApiInteractions.Singleton;
 import com.example.zhkh.ApiInteractions.pojoes.Key;
 import com.example.zhkh.ApiInteractions.pojoes.Task;
 import com.example.zhkh.ApiInteractions.pojoes.Token;
+import com.example.zhkh.ApiInteractions.pojoes.User;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -86,8 +87,37 @@ TimeUnit.SECONDS.sleep(10);
 
                 editor.apply();
 
-                Intent intent = new Intent(LogScreenActivity.this, MainActivity.class);
-                startActivity(intent);
+
+                ApiWorker aw = new ApiWorker("http://85.143.10.92:8001/");
+                IAuthApi login = aw.getLog();
+
+                login.getUser(response.body()).enqueue(new Callback<User>()
+                {
+
+                    @Override
+                    public void onResponse(Call<User> call, Response<User> response)
+                    {
+                        if(!response.isSuccessful())
+                        {
+                            System.out.println("We got some troubles. But server is okay");
+                            return;
+                        }
+
+                        Singleton.getInstance().setFio(response.body().getName());
+                        Singleton.getInstance().setAdress(response.body().getAddress());
+
+                        Intent intent = new Intent(LogScreenActivity.this, MainActivity.class);
+                        startActivity(intent);
+                    }
+
+                    @Override
+                    public void onFailure(Call<User> call, Throwable t)
+                    {
+                        System.out.println(t.getMessage());
+                    }
+
+                });
+
             }
 
             @Override

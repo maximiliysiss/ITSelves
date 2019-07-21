@@ -1,5 +1,6 @@
 package com.example.zhkh;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.BottomNavigationView;
@@ -17,8 +18,10 @@ import com.example.zhkh.ApiInteractions.ApiWorker;
 import com.example.zhkh.ApiInteractions.IAuthApi;
 import com.example.zhkh.ApiInteractions.Singleton;
 import com.example.zhkh.ApiInteractions.pojoes.Key;
+import com.example.zhkh.ApiInteractions.pojoes.Schedule;
 import com.example.zhkh.ApiInteractions.pojoes.Task;
 import com.example.zhkh.ApiInteractions.pojoes.Token;
+import com.example.zhkh.ApiInteractions.pojoes.User;
 import com.example.zhkh.Comunication.CommunicationFragment;
 import com.example.zhkh.Fragments.ProfileFragment;
 import com.example.zhkh.Schedule.ScheduleFragment;
@@ -65,6 +68,32 @@ public class MainActivity extends AppCompatActivity{
         BottomNavigationView bottomNav = findViewById(R.id.nav_view);
         bottomNav.setOnNavigationItemSelectedListener(navListener);
         bottomNav.setSelectedItemId(R.id.navigation_comunication);
+
+        ApiWorker aw = new ApiWorker("http://85.143.11.233:8002/");
+        IAuthApi api = aw.getLog();
+
+        api.getSchedule(Singleton.getInstance().getToken()).enqueue(new Callback<List<Schedule>>()
+        {
+
+            @Override
+            public void onResponse(Call<List<Schedule>> call, Response<List<Schedule>> response)
+            {
+                if(!response.isSuccessful())
+                {
+                    System.out.println("We got some troubles. But server is okay");
+                    return;
+                }
+
+                Singleton.getInstance().setScheduleList(response.body());
+            }
+
+            @Override
+            public void onFailure(Call<List<Schedule>> call, Throwable t)
+            {
+                System.out.println(t.getMessage());
+            }
+
+        });
     }
 
 }

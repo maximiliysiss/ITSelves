@@ -68,8 +68,8 @@ public class OpenTaskFragment extends Fragment {
 
                 try {
                     ListView lv = (ListView) view.findViewById(R.id.taskList);
-                    ArrayList<Task> taskList = (ArrayList<Task>) Singleton.getInstance().getTaskList();
-                    for (int i = 0; i < taskList.size(); i++) {
+                    ArrayList<Task> taskList = (ArrayList<Task>) response.body();
+                    for (int i = 0; i < response.body().size(); i++) {
                         Task temp = taskList.get(i);
                         if (temp.getTaskStatus() != 0 || temp.getTaskStatus() != 1) {
                             taskList.remove(i);
