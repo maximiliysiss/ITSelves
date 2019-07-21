@@ -1,18 +1,33 @@
 package com.example.zhkh;
 
+import android.net.Uri;
 import android.os.Bundle;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AppCompatActivity;
+import android.support.annotation.NonNull;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
+import com.example.zhkh.ApiInteractions.ApiWorker;
+import com.example.zhkh.ApiInteractions.IAuthApi;
+import com.example.zhkh.ApiInteractions.Singleton;
+import com.example.zhkh.ApiInteractions.pojoes.Key;
+import com.example.zhkh.ApiInteractions.pojoes.Task;
+import com.example.zhkh.ApiInteractions.pojoes.Token;
 import com.example.zhkh.Comunication.CommunicationFragment;
 import com.example.zhkh.Fragments.ProfileFragment;
 import com.example.zhkh.Schedule.ScheduleFragment;
+
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity{
     private String tok;
