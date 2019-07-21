@@ -25,6 +25,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CommonActionsWeb\CommonActionsWeb.csproj" />
+    <ProjectReference Include="..\CommonLibrary\CommonLibrary.csproj" />
   </ItemGroup>
 
 </Project>

@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TaskAPI;
 
 namespace TaskAPI.Migrations
 {
     [DbContext(typeof(DatabaseTaskAPI))]
-    partial class DatabaseTaskAPIModelSnapshot : ModelSnapshot
+    [Migration("20190721015114_Init")]
+    partial class Init
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -45,8 +47,6 @@ namespace TaskAPI.Migrations
                     b.Property<int>("Category");
 
                     b.Property<string>("Comment");
-
-                    b.Property<int>("Creator");
 
                     b.Property<DateTime>("DateTime");
 

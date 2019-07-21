@@ -1,0 +1,62 @@
+﻿@model CommonLibrary.Models.Task
+
+@{
+    Layout = "_Layout";
+    List<CommonLibrary.Models.Worker> workers = ViewBag.Workers;
+}
+
+<form asp-action="Create">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="form-group">
+        <label asp-for="DateTime" class="control-label"></label>
+        <input asp-for="DateTime" class="form-control" />
+        <span asp-validation-for="DateTime" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Name" class="control-label"></label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="TaskStatus" class="control-label"></label>
+        <select asp-for="TaskStatus" asp-items="new SelectList(Enum.GetValues(typeof(CommonLibrary.TaskStatus)))" class="form-control"></select>
+        <span asp-validation-for="TaskStatus" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Description" class="control-label"></label>
+        <input asp-for="Description" class="form-control" />
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Category" class="control-label"></label>
+        <select asp-for="Category" asp-items="new SelectList(Enum.GetValues(typeof(CommonLibrary.Category)))" class="form-control"></select>
+        <span asp-validation-for="Category" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="House" class="control-label"></label>
+        <input asp-for="House" class="form-control" />
+        <span asp-validation-for="House" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Worker" class="control-label"></label>
+        <select asp-for="Worker" asp-items="new SelectList(workers.Select(x=>x.Name), workers.Select(x=>x.ID))" class="form-control"></select>
+        <span asp-validation-for="Worker" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Comment" class="control-label"></label>
+        <input asp-for="Comment" class="form-control" />
+        <span asp-validation-for="Comment" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Rate" class="control-label"></label>
+        <select asp-for="Rate" asp-items="new SelectList(Enum.GetValues(typeof(CommonLibrary.Rate)))" class="form-control"></select>
+        <span asp-validation-for="Rate" class="text-danger"></span>
+    </div>
+    <div class="form-group" style="margin-top: 10px">
+        <input type="submit" value="Create" class="btn btn-primary" />
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>

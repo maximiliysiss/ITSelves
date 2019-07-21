@@ -26,8 +26,7 @@ namespace HCSApi
         public void ConfigureServices(IServiceCollection services)
         {
 
-            services.AddDbContext<DatabaseHCSAPI>(x => x.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-
+            services.AddDbContext<CommonLibrary.Databases.DatabaseHCSApi>(x => x.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 

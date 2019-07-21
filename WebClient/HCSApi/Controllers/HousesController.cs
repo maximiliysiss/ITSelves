@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using HCSApi;
-using HCSApi.Models;
+using CommonLibrary.Models;
 
 namespace HCSApi.Controllers
 {
@@ -14,9 +14,9 @@ namespace HCSApi.Controllers
     [ApiController]
     public class HousesController : ControllerBase
     {
-        private readonly DatabaseHCSAPI _context;
+        private readonly CommonLibrary.Databases.DatabaseHCSApi _context;
 
-        public HousesController(DatabaseHCSAPI context)
+        public HousesController(CommonLibrary.Databases.DatabaseHCSApi context)
         {
             _context = context;
         }

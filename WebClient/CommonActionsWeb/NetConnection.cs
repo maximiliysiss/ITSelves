@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -9,24 +10,57 @@ namespace CommonActions
 {
     public class NetConnection
     {
-        public static Dictionary<string, string> Tokens { get; private set; } = new Dictionary<string, string>();
-        public async static Task<JObject> LoadJObject(string url, string content, HttpMethod httpMethod, Dictionary<string, string> headers)
+        public string BaseURL { get; set; }
+        public async Task<T> LoadObjectByGet<T>(string url, string content = "", string token = "")
+            where T : class
         {
             using (var client = new HttpClient())
             {
-                HttpRequestMessage httpRequestMessage = new HttpRequestMessage();
-                httpRequestMessage.Method = httpMethod;
-                foreach (var pair in headers)
-                    httpRequestMessage.Headers.Add(pair.Key, pair.Value);
-                if (httpMethod != HttpMethod.Get)
-                    httpRequestMessage.Content = new StringContent(content);
-                if (httpMethod == HttpMethod.Get)
-                    httpRequestMessage.RequestUri = new Uri(url + (content.Length > 0 ? "?" : "") + content);
-                else
-                    httpRequestMessage.RequestUri = new Uri(url);
+                HttpRequestMessage httpRequestMessage = new HttpRequestMessage
+                {
+                    Method = HttpMethod.Get,
+                    RequestUri = new Uri(BaseURL + url + (content.Length > 0 ? "?" : "") + content)
+                };
+                if (token.Length > 0)
+                    httpRequestMessage.Headers.Add("Token", token);
                 var result = await client.SendAsync(httpRequestMessage);
                 if (result.IsSuccessStatusCode)
-                    return JObject.Parse(new StreamReader(await result.Content.ReadAsStreamAsync()).ReadToEnd());
+                    return JsonConvert.DeserializeObject<T>(new StreamReader(await result.Content.ReadAsStreamAsync()).ReadToEnd());
+            }
+            return null;
+        }
+
+        public async Task<T> LoadObjectByDelete<T>(string url)
+            where T : class
+        {
+            using (var client = new HttpClient())
+            {
+                HttpRequestMessage httpRequestMessage = new HttpRequestMessage
+                {
+                    Method = HttpMethod.Delete,
+                    RequestUri = new Uri(BaseURL + url)
+                };
+                var result = await client.SendAsync(httpRequestMessage);
+                if (result.IsSuccessStatusCode)
+                    return JsonConvert.DeserializeObject<T>(new StreamReader(await result.Content.ReadAsStreamAsync()).ReadToEnd());
+            }
+            return null;
+        }
+
+        public async Task<T> LoadObjectByPost<T>(string url, string content = "")
+            where T : class
+        {
+            using (var client = new HttpClient())
+            {
+                HttpRequestMessage httpRequestMessage = new HttpRequestMessage
+                {
+                    Method = HttpMethod.Post,
+                    RequestUri = new Uri(BaseURL + url),
+                    Content = new StringContent(content)
+                };
+                var result = await client.SendAsync(httpRequestMessage);
+                if (result.IsSuccessStatusCode)
+                    return JsonConvert.DeserializeObject<T>(new StreamReader(await result.Content.ReadAsStreamAsync()).ReadToEnd());
             }
             return null;
         }

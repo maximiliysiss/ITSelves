@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+using CommonActionsWeb;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using TaskAPI;
-using TaskAPI.Models;
 
 namespace TaskAPI.Controllers
 {
@@ -22,14 +19,27 @@ namespace TaskAPI.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Models.Task>>> GetTask()
+        public async Task<ActionResult<IEnumerable<CommonLibrary.Models.Task>>> GetTask()
         {
+            if (!this.IsAuth())
+                return NotFound();
             return await _context.Task.ToListAsync();
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<Models.Task>> GetTask(int id)
+        [Route("getWorkerTask")]
+        public async Task<ActionResult<IEnumerable<CommonLibrary.Models.Task>>> GetWorkerTask(int id)
         {
+            if (!this.IsAuth())
+                return NotFound();
+            return await _context.Task.Where(x => x.Worker == id && x.TaskStatus == CommonLibrary.TaskStatus.InProgress).ToListAsync();
+        }
+
+        [HttpGet("{id}")]
+        public async Task<ActionResult<CommonLibrary.Models.Task>> GetTask(int id)
+        {
+            if (!this.IsAuth())
+                return NotFound();
             var task = await _context.Task.FindAsync(id);
 
             if (task == null)
@@ -42,8 +52,10 @@ namespace TaskAPI.Controllers
 
         [HttpPut]
         [Route("edit")]
-        public async Task<IActionResult> Edit(Models.Task task)
+        public async Task<IActionResult> Edit(CommonLibrary.Models.Task task)
         {
+            if (!this.IsAuth())
+                return NotFound();
             _context.Entry(task).State = EntityState.Modified;
 
             try
@@ -60,8 +72,10 @@ namespace TaskAPI.Controllers
 
         [HttpPost]
         [Route("add")]
-        public async Task<ActionResult<Models.Task>> Add(Models.Task task)
+        public async Task<ActionResult<CommonLibrary.Models.Task>> Add(CommonLibrary.Models.Task task)
         {
+            if (!this.IsAuth())
+                return NotFound();
             _context.Task.Add(task);
             await _context.SaveChangesAsync();
 
@@ -70,8 +84,10 @@ namespace TaskAPI.Controllers
 
         [HttpDelete("{id}")]
         [Route("delete")]
-        public async Task<ActionResult<Models.Task>> DeleteTask(int id)
+        public async Task<ActionResult<CommonLibrary.Models.Task>> DeleteTask(int id)
         {
+            if (!this.IsAuth())
+                return NotFound();
             var task = await _context.Task.FindAsync(id);
             if (task == null)
             {
