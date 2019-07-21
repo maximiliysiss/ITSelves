@@ -37,17 +37,6 @@
             app:layout_constraintStart_toStartOf="@+id/editTextTask"
             app:layout_constraintTop_toBottomOf="@+id/editTextTask" />
 
-        <TextView
-            android:id="@+id/textView13"
-            android:layout_width="wrap_content"
-            android:layout_height="19dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:text="Опишите Вашу проблему"
-            android:textColor="#FC050404"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/category" />
-
         <EditText
             android:id="@+id/editTextTask"
             android:layout_width="0dp"
@@ -56,10 +45,11 @@
             android:layout_marginEnd="24dp"
             android:ems="10"
             android:gravity="start|top"
+            android:hint="Опишите Вашу проблему"
             android:inputType="textMultiLine"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/textView13"
-            app:layout_constraintTop_toBottomOf="@+id/textView13" />
+            app:layout_constraintStart_toStartOf="@+id/textView14"
+            app:layout_constraintTop_toBottomOf="@+id/category" />
 
         <EditText
             android:id="@+id/editTextFeedbackEmail"
@@ -97,6 +87,7 @@
             android:layout_marginTop="8dp"
             android:minWidth="200dp"
             android:scrollbarSize="8dp"
+            android:entries="@array/categories"
             app:layout_constraintEnd_toEndOf="@+id/editTextTask"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toEndOf="@+id/textView14"

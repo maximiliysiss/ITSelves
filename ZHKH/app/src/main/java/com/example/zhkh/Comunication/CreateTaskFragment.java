@@ -52,6 +52,12 @@ public class CreateTaskFragment extends Fragment {
         photo3 = (ImageButton) view.findViewById(R.id.imageButSecondPriority2);
         feedbackEmail = (TextView) view.findViewById(R.id.editTextFeedbackEmail);
 
+        pushTask.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String selected = categories.getSelectedItem().toString();
+            }
+        });
         return view;
     }
 

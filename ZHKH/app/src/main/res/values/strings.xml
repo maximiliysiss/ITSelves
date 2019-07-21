@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ZHKH</string>
+    <string name="app_name">ЕСИАС: Мой дом</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
@@ -7,6 +7,9 @@
     <string name="title_profile">Профиль</string>
     <string name="title_sсhedule">Расписание</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string-array name="categories">
+        <item>Уборка</item>
+        <item>Ремонт</item>
+    </string-array>
 </resources>

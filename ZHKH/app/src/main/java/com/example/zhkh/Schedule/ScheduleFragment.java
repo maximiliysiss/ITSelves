@@ -42,31 +42,59 @@ public class ScheduleFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_schedule, container, false);
         customCalendar = (CustomCalendar) view.findViewById(R.id.customCalendar);
 
-        String[] arr = {"2019-08-10", "2019-08-11", "2019-08-15", "2019-08-16", "2019-08-25"};
-        for (int i = 0; i < 5; i++) {
-            int eventCount = 3;
-            customCalendar.addAnEvent(arr[i], eventCount, getEventDataList(eventCount));
-        }
+        String[] arr1 = {"2019-07-21", "2019-07-27", "2019-07-31"};
+        customCalendar.addAnEvent("2019-07-21", 1, getEvent(
+                "Уборка придворовой территории", "2019-07-21",
+                "Дворник будет убираться с 9.30-11.30",
+                "Придворовая территория", "Уборка"));
+        customCalendar.addAnEvent("2019-07-27", 1, getEvent(
+                "Уборка придворовой территории", "2019-07-21",
+                "Дворник будет убираться с 9.30-11.30",
+                "Придворовая территория", "Уборка"));
+        customCalendar.addAnEvent("2019-07-23", 1, getEvent(
+                "Замена труб. Отключение горячей воды", "2019-08-10",
+                "Замена труб на участке с д.2 до д.15 по Вашей улице",
+                "Трубопровод", "Замена труб"  ));
+        customCalendar.addAnEvent("2019-08-10", 1, getEvent(
+                "Замена труб. Отключение горячей воды", "",
+                "Окончание работ",
+                "Трубопровод", "Замена труб"  ));
         return view;
     }
 
-    private ArrayList<EventData> getEventDataList(int eventCount){
+    private ArrayList<EventData> getEvent(String section, String submissionDate,
+                                                 String remarks, String subject, String title) {
         ArrayList<EventData> events = new ArrayList<>();
-        for(int i = 0; i < eventCount; i++){
-            EventData eventData = new EventData();
-            eventData.setSection("section");
-            ArrayList<dataAboutDate> list = new ArrayList<>();
-            dataAboutDate dataDate = new dataAboutDate();
-            dataDate.setSubmissionDate("2019-08-18");
-            dataDate.setRemarks("remark");
-            dataDate.setSubject("subject");
-            dataDate.setTitle("title");
-            list.add(dataDate);
-            eventData.setData(list);
-            events.add(eventData);
-        }
+        EventData eventData = new EventData();
+        eventData.setSection("Замена труб. Отключение горячей воды");
+        ArrayList<dataAboutDate> dataAboutDates = new ArrayList<>();
+        dataAboutDate dataDate = new dataAboutDate();
+        dataDate.setSubmissionDate("2019-08-10");
+        dataDate.setRemarks("Замена труб на участке с д.2 до д.15 по Вашей улице");
+        dataDate.setSubject("Трубопровод");
+        dataDate.setTitle("Замена труб");
+        dataAboutDates.add(dataDate);
+        eventData.setData(dataAboutDates);
+        events.add(eventData);
         return events;
     }
+
+    private ArrayList<EventData> getEventDataListArr2(){
+        ArrayList<EventData> events = new ArrayList<>();
+        EventData eventData = new EventData();
+        eventData.setSection("section");
+        ArrayList<dataAboutDate> list = new ArrayList<>();
+        dataAboutDate dataDate = new dataAboutDate();
+        dataDate.setSubmissionDate("2019-08-18");
+        dataDate.setRemarks("remark");
+        dataDate.setSubject("subject");
+        dataDate.setTitle("title");
+        list.add(dataDate);
+        eventData.setData(list);
+        events.add(eventData);
+        return events;
+    }
+
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
             mListener.onFragmentInteraction(uri);
