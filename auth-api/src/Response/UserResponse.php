@@ -11,7 +11,44 @@
 namespace App\Response;
 
 
+use App\Entity\User;
+use Swagger\Annotations as SWG;
+
 class UserResponse
 {
-//    pro
+    /**
+     * @var string
+     *
+     * @SWG\Property(type="string")
+     */
+    protected $name;
+
+    /**
+     * @var string
+     *
+     * @SWG\Property(type="string")
+     */
+    protected $phone;
+
+    /**
+     * @var string
+     *
+     * @SWG\Property(type="string")
+     */
+    protected $email;
+
+    /**
+     * @var string
+     *
+     * @SWG\Property()
+     */
+    protected $address;
+
+    public function __construct(User $user, $address)
+    {
+        $this->name = $user->getName();
+        $this->phone = $user->getPhone();
+        $this->email = $user->getEmail();
+        $this->address = $address;
+    }
 }

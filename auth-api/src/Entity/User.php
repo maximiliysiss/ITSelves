@@ -27,10 +27,9 @@ class User extends AbstractUser
     /**
      * @var string
      *
-     * @JMS\Expose()
-     * @JMS\Groups(groups={"all"})
+     * @ORM\Column(type="integer")
      */
-    protected $address;
+    protected $addressId;
 
     /**
      * User constructor.

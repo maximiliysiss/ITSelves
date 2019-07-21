@@ -16,6 +16,7 @@ use App\Entity\User;
 use App\Request\LoginRequest;
 use App\Request\RegistrationRequest;
 use App\Request\VerifyTokenRequest;
+use App\Response\UserResponseModelFactory;
 use App\Response\TokenResponse;
 use JMS\Serializer\Serializer;
 use JMS\Serializer\SerializerInterface;
@@ -38,13 +39,20 @@ class AuthController extends AbstractController
     protected $serializer;
 
     /**
+     * @var UserResponseModelFactory
+     */
+    protected $userResponseModelFactory;
+
+    /**
      * AuthController constructor.
      *
      * @param SerializerInterface $serializer
+     * @param UserResponseModelFactory $userResponseModelFactory
      */
-    public function __construct(SerializerInterface $serializer)
+    public function __construct(SerializerInterface $serializer, UserResponseModelFactory $userResponseModelFactory)
     {
         $this->serializer = $serializer;
+        $this->userResponseModelFactory = $userResponseModelFactory;
     }
 
     /**
@@ -178,13 +186,14 @@ class AuthController extends AbstractController
             throw new BadCredentialsException("Неверный токен");
         }
 
+        $user = $this->userResponseModelFactory->createUserResponse($user);
+
         return JsonResponse::fromJsonString(
             $this->serializer->serialize(
                 $user, 'json'
             )
         );
     }
-
 
     /**
      * @return \App\Repository\AbstractUserRepository|\Doctrine\Common\Persistence\ObjectRepository
