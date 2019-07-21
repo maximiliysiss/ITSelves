@@ -1,11 +1,9 @@
 package com.example.zhkh;
 
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.zhkh.ApiInteractions.ApiWorker;
 import com.example.zhkh.ApiInteractions.IAuthApi;
@@ -15,7 +13,6 @@ import com.example.zhkh.ApiInteractions.pojoes.Task;
 import com.example.zhkh.ApiInteractions.pojoes.Token;
 
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 import retrofit2.Call;
 import retrofit2.Callback;
