@@ -39,8 +39,13 @@ class UserResponse
 
     /**
      * @var string
+     */
+    protected $key;
+
+    /**
+     * @var string
      *
-     * @SWG\Property()
+     * @SWG\Property(type="string")
      */
     protected $address;
 
@@ -49,6 +54,7 @@ class UserResponse
         $this->name = $user->getName();
         $this->phone = $user->getPhone();
         $this->email = $user->getEmail();
+        $this->key = $user->getUserKey();
         $this->address = $address;
     }
 }

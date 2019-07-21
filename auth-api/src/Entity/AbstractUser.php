@@ -267,6 +267,24 @@ abstract class AbstractUser implements UserInterface
     }
 
     /**
+     * @return string
+     */
+    public function getUserKey(): ?string
+    {
+        return $this->userKey;
+    }
+
+    /**
+     * @param string $userKey
+     * @return AbstractUser
+     */
+    public function setUserKey(string $userKey): AbstractUser
+    {
+        $this->userKey = $userKey;
+        return $this;
+    }
+
+    /**
      * @JMS\VirtualProperty(name="role")
      *
      * @return string
