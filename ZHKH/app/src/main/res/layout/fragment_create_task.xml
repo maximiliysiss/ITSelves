@@ -38,17 +38,6 @@
             app:layout_constraintStart_toStartOf="@+id/editTextTask"
             app:layout_constraintTop_toBottomOf="@+id/editTextTask" />
 
-        <TextView
-            android:id="@+id/textView13"
-            android:layout_width="wrap_content"
-            android:layout_height="19dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:text="Опишите Вашу проблему"
-            android:textColor="#FC050404"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/category" />
-
         <EditText
             android:id="@+id/editTextTask"
             android:layout_width="0dp"
@@ -57,10 +46,11 @@
             android:layout_marginEnd="24dp"
             android:ems="10"
             android:gravity="start|top"
+            android:hint="Опишите Вашу проблему"
             android:inputType="textMultiLine"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/textView13"
-            app:layout_constraintTop_toBottomOf="@+id/textView13" />
+            app:layout_constraintStart_toStartOf="@+id/textView14"
+            app:layout_constraintTop_toBottomOf="@+id/category" />
 
         <EditText
             android:id="@+id/editTextFeedbackEmail"
@@ -99,6 +89,7 @@
             android:layout_marginTop="8dp"
             android:minWidth="200dp"
             android:scrollbarSize="8dp"
+            android:entries="@array/categories"
             app:layout_constraintEnd_toEndOf="@+id/editTextTask"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toEndOf="@+id/textView14"
@@ -114,6 +105,20 @@
             android:textColor="#0F0505"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/eventName"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="24dp"
+            android:hint="Название заявки"
+            android:textAllCaps="false"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@+id/imageButSecondPriority2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageButSecondPriority2"
+            app:layout_constraintTop_toTopOf="@+id/imageButSecondPriority2" />
 
     </android.support.constraint.ConstraintLayout>
 </ScrollView>

@@ -44,7 +44,7 @@ public class CreateTaskFragment extends Fragment {
     private EditText taskDesc;
     private Spinner categories;
     private ImageButton photo1, photo2, photo3;
-    private TextView feedbackEmail;
+    private TextView feedbackEmail, eventName;
     public CreateTaskFragment() {
     }
 

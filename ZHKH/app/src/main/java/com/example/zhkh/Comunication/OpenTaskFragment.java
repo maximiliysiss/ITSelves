@@ -41,7 +41,6 @@ public class OpenTaskFragment extends Fragment {
         Bundle args = new Bundle();
         OpenTaskFragment fragment = new OpenTaskFragment();
         fragment.setArguments(args);
-
         return fragment;
     }
 
@@ -55,7 +54,6 @@ public class OpenTaskFragment extends Fragment {
         IAuthApi taskApi = awt.getLog();
         taskApi.getTask(Singleton.getInstance().getToken()).enqueue(new Callback<List<Task>>()
         {
-
             @Override
             public void onResponse(Call<List<Task>> call, Response<List<Task>> response)
             {
@@ -65,8 +63,6 @@ public class OpenTaskFragment extends Fragment {
                     return;
                 }
                 Singleton.getInstance().setTaskList(response.body());
-
-
                     ListView lv = (ListView) view.findViewById(R.id.taskList);
                     ArrayList<Task> taskList = (ArrayList<Task>) response.body();
                     for (int i = 0; i < response.body().size(); i++) {
@@ -75,22 +71,16 @@ public class OpenTaskFragment extends Fragment {
                             taskList.remove(i);
                         }
                     }
-                    ListTaskAdapter adapter = new ListTaskAdapter(view.getContext(), R.layout.item_event, taskList);
+                    ListTaskAdapter adapter = new ListTaskAdapter(view.getContext(),
+                            R.layout.item_event, taskList, getFragmentManager());
                     lv.setAdapter(adapter);
-
-
             }
-
             @Override
             public void onFailure(Call<List<Task>> call, Throwable t)
             {
                 System.out.println(t.getMessage());
             }
-
         });
-
-
-
         return view;
     }
 }
