@@ -12,20 +12,27 @@ import android.widget.TextView;
 import com.example.zhkh.ApiInteractions.pojoes.Task;
 import com.example.zhkh.R;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class ListTaskAdapter  extends ArrayAdapter<Task> {
     private LayoutInflater inflater;
     private int layout;
     private ArrayList<Task> itemList;
+    Map<Integer,String> dictionary = new HashMap<Integer, String>();
+
 
     public ListTaskAdapter(@NonNull Context context, int resource, ArrayList<Task> items) {
         super(context, resource, items);
         this.itemList = items;
         this.layout = resource;
         this.inflater = LayoutInflater.from(context);
+        dictionary.put(0,"В прогрессе");
+        dictionary.put(1, "В обработке");
+        dictionary.put(2, "Ждет вашей оценки");
+        dictionary.put(3, "Завершена");
+        dictionary.put(4, "Отклонена");
     }
     public View getView(final int position, View convertView, ViewGroup parent) {
 
@@ -40,10 +47,10 @@ public class ListTaskAdapter  extends ArrayAdapter<Task> {
         }
         final Task item = itemList.get(position);
 
-        viewHolder.status.setText(item.getTaskStatus());
-        viewHolder.date.setText(item.getDateTime());
-        viewHolder.name.setText(item.getHouse());
-        viewHolder.shortMessage.setText(item.getDescription());
+        viewHolder.status.setText(dictionary.get(item.getTaskStatus()));
+        viewHolder.date.setText(item.getDateTime()+" ");
+        viewHolder.name.setText(item.getName()+" ");
+        viewHolder.shortMessage.setText(item.getShortName()+" ");
         return convertView;
     }
 

@@ -29,7 +29,7 @@ public class TabComunicAdapter extends FragmentPagerAdapter {
         switch (position) {
             case 0:
                 try {
-                    return OpenTaskFragment.getInstance();
+                    return CloseTaskFragment.getInstance();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 } catch (ExecutionException e) {
@@ -39,7 +39,7 @@ public class TabComunicAdapter extends FragmentPagerAdapter {
                 }
             case 1:
                 try {
-                    return CloseTaskFragment.getInstance();
+                    return OpenTaskFragment.getInstance();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 } catch (ExecutionException e) {

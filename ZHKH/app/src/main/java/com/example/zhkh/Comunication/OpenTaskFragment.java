@@ -50,7 +50,7 @@ public class OpenTaskFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(LAYOUT, container, false);
 
-                ApiWorker awt = new ApiWorker("http://85.143.11.233:8000/");
+        ApiWorker awt = new ApiWorker("http://85.143.11.233:8000/");
 
         IAuthApi taskApi = awt.getLog();
         taskApi.getTask(Singleton.getInstance().getToken()).enqueue(new Callback<List<Task>>()
@@ -66,21 +66,19 @@ public class OpenTaskFragment extends Fragment {
                 }
                 Singleton.getInstance().setTaskList(response.body());
 
-                try {
+
                     ListView lv = (ListView) view.findViewById(R.id.taskList);
                     ArrayList<Task> taskList = (ArrayList<Task>) response.body();
                     for (int i = 0; i < response.body().size(); i++) {
                         Task temp = taskList.get(i);
-                        if (temp.getTaskStatus() != 0 || temp.getTaskStatus() != 1) {
+                        if (temp.getTaskStatus() != 0 && temp.getTaskStatus() != 1) {
                             taskList.remove(i);
                         }
                     }
                     ListTaskAdapter adapter = new ListTaskAdapter(view.getContext(), R.layout.item_event, taskList);
                     lv.setAdapter(adapter);
-                }
-                catch (Exception e){
-                    e.printStackTrace();
-            }
+
+
             }
 
             @Override
