@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ImageButton
+    <ImageView
         android:id="@+id/userPhoto"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -19,7 +19,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints"
-        tools:srcCompat="@tools:sample/avatars[0]" />
+        android:src = "@drawable/afanasiy"/>
 
     <TextView
         android:id="@+id/fioTextView"
@@ -89,7 +89,8 @@
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="64dp"
-        android:text="Информация об Управляющей компании\n Контакты\n Адрес"
+        android:text="Информация об Управляющей компании\nТелефон: 8 (492) 245-10-43
+\nАдрес: пр. Ленина, 9, Владимир, Владимирская обл., 600001"
         android:textColor="#D00C0606"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

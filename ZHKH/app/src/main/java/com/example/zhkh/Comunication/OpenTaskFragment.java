@@ -71,7 +71,8 @@ public class OpenTaskFragment extends Fragment {
                             taskList.remove(i);
                         }
                     }
-                    ListTaskAdapter adapter = new ListTaskAdapter(view.getContext(), R.layout.item_event, taskList);
+                    ListTaskAdapter adapter = new ListTaskAdapter(view.getContext(),
+                            R.layout.item_event, taskList, getFragmentManager());
                     lv.setAdapter(adapter);
             }
             @Override

@@ -22,7 +22,7 @@ public class CreateTaskFragment extends Fragment {
     private EditText taskDesc;
     private Spinner categories;
     private ImageButton photo1, photo2, photo3;
-    private TextView feedbackEmail;
+    private TextView feedbackEmail, eventName;
     public CreateTaskFragment() {
     }
 
@@ -51,7 +51,7 @@ public class CreateTaskFragment extends Fragment {
         photo2 = (ImageButton) view.findViewById(R.id.imageButSecondPriority1);
         photo3 = (ImageButton) view.findViewById(R.id.imageButSecondPriority2);
         feedbackEmail = (TextView) view.findViewById(R.id.editTextFeedbackEmail);
-
+        eventName = (TextView) view.findViewById(R.id.eventName);
         pushTask.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
