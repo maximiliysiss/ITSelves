@@ -13,6 +13,8 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Request\UpdateUserRequest;
+use App\Request\UploadPhotoRequest;
+use App\Response\PhotoResponse;
 use JMS\Serializer\Serializer;
 use JMS\Serializer\SerializerInterface;
 use Nelmio\ApiDocBundle\Annotation\Model;
@@ -31,7 +33,7 @@ use Symfony\Component\Routing\Annotation\Route;
  *
  * @SWG\Tag(name="User")
  *
- * @Security(name="token")
+ * @Security(name="Token")
  */
 class UserController extends AbstractController
 {
@@ -124,6 +126,68 @@ class UserController extends AbstractController
         $em->flush();
 
         return new Response(null, Response::HTTP_NO_CONTENT);
+    }
+
+    /**
+     * @Route("/photo/upload/", name="upload_photo", methods={"post"})
+     *
+     * @SWG\Response(
+     *     response="204",
+     *     description="Загружает изображение"
+     * )
+     * @SWG\Response(
+     *     response="404",
+     *     description="Изображение не найдено"
+     * )
+     *
+     * @SWG\Parameter(
+     *     name="Загрузка фото",
+     *     in="body",
+     *     @Model(type=UploadPhotoRequest::class)
+     * )
+     *
+     * @param UploadPhotoRequest $request
+     *
+     * @return Response
+     */
+    public function uploadPhotoAction(UploadPhotoRequest $request)
+    {
+        $photo = $request->get('photo');
+        /** @var User $user */
+        $user = $this->getUser();
+        $user->setPhoto($photo);
+
+        $this->getDoctrine()->getManager()->flush();
+
+        return new Response(null, Response::HTTP_NO_CONTENT);
+    }
+
+    /**
+     * @Route("/photo/", name="get_photo", methods={"get"})
+     *
+     * @SWG\Response(
+     *     response="200",
+     *     description="Возвращает изображение пользователя",
+     * )
+     * @SWG\Response(
+     *     response="404",
+     *     description="Изображение не найдено"
+     * )
+     *
+     * @return JsonResponse
+     */
+    public function loadPhotoAction()
+    {
+        /** @var User $user */
+        $user = $this->getUser();
+
+        if (!$user->havePhoto()) {
+            throw new NotFoundHttpException('Фото пользователя не найдено');
+        }
+
+        return JsonResponse::fromJsonString(
+            $this->serializer->serialize(new PhotoResponse($user->getPhoto()), 'json')
+        );
     }
 
     /**
