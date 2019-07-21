@@ -1,107 +1,116 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Fragments.CreateTaskFragment">
+    tools:context=".Comunication.CreateTaskFragment">
 
-    <ImageButton
-        android:id="@+id/imageButSecondPriority1"
-        android:layout_width="68dp"
-        android:layout_height="68dp"
-        android:layout_marginStart="8dp"
-        android:src="@android:drawable/ic_input_add"
-        app:layout_constraintStart_toEndOf="@+id/imageButPrioriry"
-        app:layout_constraintTop_toTopOf="@+id/imageButPrioriry" />
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <ImageButton
-        android:id="@+id/imageButSecondPriority2"
-        android:layout_width="68dp"
-        android:layout_height="68dp"
-        android:layout_marginStart="8dp"
-        android:src="@android:drawable/ic_input_add"
-        app:layout_constraintStart_toEndOf="@+id/imageButSecondPriority1"
-        app:layout_constraintTop_toTopOf="@+id/imageButSecondPriority1" />
+        <ImageButton
+            android:id="@+id/imageButSecondPriority1"
+            android:layout_width="68dp"
+            android:layout_height="68dp"
+            android:layout_marginStart="8dp"
+            android:src="@android:drawable/ic_input_add"
+            app:layout_constraintStart_toEndOf="@+id/imageButPrioriry"
+            app:layout_constraintTop_toTopOf="@+id/imageButPrioriry" />
 
-    <ImageButton
-        android:id="@+id/imageButPrioriry"
-        android:layout_width="68dp"
-        android:layout_height="68dp"
-        android:layout_marginTop="8dp"
-        android:src="@android:drawable/ic_input_add"
-        app:layout_constraintStart_toStartOf="@+id/editTextTask"
-        app:layout_constraintTop_toBottomOf="@+id/spinner" />
+        <ImageButton
+            android:id="@+id/imageButSecondPriority2"
+            android:layout_width="68dp"
+            android:layout_height="68dp"
+            android:layout_marginStart="8dp"
+            android:src="@android:drawable/ic_input_add"
+            app:layout_constraintStart_toEndOf="@+id/imageButSecondPriority1"
+            app:layout_constraintTop_toTopOf="@+id/imageButSecondPriority1" />
 
-    <TextView
-        android:id="@+id/textView13"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:text="Опишите Вашу проблему"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <ImageButton
+            android:id="@+id/imageButPrioriry"
+            android:layout_width="68dp"
+            android:layout_height="68dp"
+            android:layout_marginTop="8dp"
+            android:src="@android:drawable/ic_input_add"
+            app:layout_constraintStart_toStartOf="@+id/editTextTask"
+            app:layout_constraintTop_toBottomOf="@+id/spinner" />
 
-    <EditText
-        android:id="@+id/editTextTask"
-        android:layout_width="0dp"
-        android:layout_height="336dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="24dp"
-        android:ems="10"
-        android:gravity="start|top"
-        android:inputType="textMultiLine"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/textView13"
-        app:layout_constraintTop_toBottomOf="@+id/textView13" />
+        <TextView
+            android:id="@+id/textView13"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="Опишите Вашу проблему"
+            android:textColor="#FC050404"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/editTextFeedbackEmail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:ems="10"
-        android:inputType="textEmailAddress"
-        android:text="Feedback E-mail"
-        app:layout_constraintStart_toStartOf="@+id/editTextTask"
-        app:layout_constraintTop_toBottomOf="@+id/imageButSecondPriority1" />
+        <EditText
+            android:id="@+id/editTextTask"
+            android:layout_width="0dp"
+            android:layout_height="300dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="24dp"
+            android:ems="10"
+            android:gravity="start|top"
+            android:inputType="textMultiLine"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/textView13"
+            app:layout_constraintTop_toBottomOf="@+id/textView13" />
 
-    <Button
-        android:id="@+id/sendTuskButton"
-        android:layout_width="183dp"
-        android:layout_height="47dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:text="Отправить"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextFeedbackEmail" />
+        <EditText
+            android:id="@+id/editTextFeedbackEmail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:ems="10"
+            android:hint="Feedback E-mail"
+            android:inputType="textEmailAddress"
+            app:layout_constraintStart_toStartOf="@+id/editTextTask"
+            app:layout_constraintTop_toBottomOf="@+id/imageButSecondPriority1" />
 
-    <Spinner
-        android:id="@+id/spinner"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:minWidth="200dp"
-        android:scrollbarSize="8dp"
-        app:layout_constraintEnd_toEndOf="@+id/editTextTask"
-        app:layout_constraintStart_toEndOf="@+id/textView14"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTask" />
+        <Button
+            android:id="@+id/sendTuskButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="64dp"
+            android:background="@color/colorPrimaryDark"
+            android:text="Отправить"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextFeedbackEmail"
+            app:layout_constraintVertical_bias="0.060000002" />
 
-    <TextView
-        android:id="@+id/textView14"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="Выберете категорию"
-        app:layout_constraintBottom_toBottomOf="@+id/spinner"
-        app:layout_constraintStart_toStartOf="@+id/editTextTask"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTask" />
+        <Spinner
+            android:id="@+id/spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:minWidth="200dp"
+            android:scrollbarSize="8dp"
+            app:layout_constraintEnd_toEndOf="@+id/editTextTask"
+            app:layout_constraintStart_toEndOf="@+id/textView14"
+            app:layout_constraintTop_toBottomOf="@+id/editTextTask" />
 
-</android.support.constraint.ConstraintLayout>
+        <TextView
+            android:id="@+id/textView14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Выберете категорию"
+            android:textColor="#0F0505"
+            app:layout_constraintBottom_toBottomOf="@+id/spinner"
+            app:layout_constraintStart_toStartOf="@+id/editTextTask"
+            app:layout_constraintTop_toBottomOf="@+id/editTextTask" />
+
+    </android.support.constraint.ConstraintLayout>
+</ScrollView>

@@ -28,7 +28,7 @@
         tools:layout="@layout/fragment_schedule" />
     <fragment
         android:id="@+id/createTaskFragment"
-        android:name="com.example.zhkh.Fragments.CreateTaskFragment"
+        android:name="com.example.zhkh.Comunication.CreateTaskFragment"
         android:label="fragment_create_task"
         tools:layout="@layout/fragment_create_task" />
 </navigation>
