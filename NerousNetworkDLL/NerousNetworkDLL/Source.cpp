@@ -93,11 +93,12 @@ int main() {
 	}
 	ns.train(train, COUNT);
 
-	/*int test[][4]{ {0,0},{0,1},{1,0},{1,1} };
+	int test[][4]{ {0,0},{0,1},{1,0},{1,1} };
 	for (int i = 0; i < 4; i++) {
 		cout << "line #" << i + 1 << " " << boolalpha << (bool)test[i][0] << "^" << boolalpha << (bool)test[i][1]
 			<< "=" << boolalpha << ns.get({ (float)test[i][0], (float)test[i][1] }, 0) * 100 << endl;
-	}*/
+	}
+
 
 	system("pause");
 	return 0;

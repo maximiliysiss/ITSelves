@@ -6,6 +6,7 @@ namespace CommonLibrary
 {
     public enum TaskStatus
     {
+        Create,
         InConsideration,
         InProgress,
         Mark,
@@ -40,7 +41,11 @@ namespace CommonLibrary
         };
         public static Dictionary<TaskStatus, string> RuTaskStatus = new Dictionary<TaskStatus, string>
         {
-            {TaskStatus.Confirmed, "Выполнено"}, {TaskStatus.Declined, "Отклонено"}, { TaskStatus.InConsideration, "На рассмотрении" }, { TaskStatus.InProgress, "В прогрессе" },{ TaskStatus.Mark, "Оценивание" }
+            { TaskStatus.Create, "Создание" },{TaskStatus.Confirmed, "Выполнено"}, {TaskStatus.Declined, "Отклонено"}, { TaskStatus.InConsideration, "На рассмотрении" }, { TaskStatus.InProgress, "В прогрессе" },{ TaskStatus.Mark, "Оценивание" }
+        };
+        public static Dictionary<DayOfWeek, string> RuDayOfWeek = new Dictionary<DayOfWeek, string>
+        {
+            { DayOfWeek.Friday, "Пятница" },{DayOfWeek.Monday, "Понедельник"}, {DayOfWeek.Saturday, "Суббота"}, { DayOfWeek.Sunday, "Воскресение" }, { DayOfWeek.Thursday, "Четверг" },{ DayOfWeek.Tuesday, "Вторник" }, { DayOfWeek.Wednesday, "Среда"}
         };
     }
 }

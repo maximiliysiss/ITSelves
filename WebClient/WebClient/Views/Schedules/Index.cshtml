@@ -9,16 +9,16 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Worker)
+                Работник
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.DayOfWeek)
+                День недели
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.StartTime)
+                Начало работы
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.EndTime)
+                Конец работы
             </th>
             <th></th>
         </tr>
@@ -26,23 +26,24 @@
     <tbody>
         @foreach (var item in Model)
         {
+            var worker = await new CommonActions.NetConnection { BaseURL = CommonActions.Configuration.URLS["Auth"] }
+                .LoadObjectByGet<CommonLibrary.Models.Worker>($"/worker/{item.Worker}", token: Context.Session.GetString("Token"));
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Worker)
+                    @worker.Name
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.DayOfWeek)
+                    @CommonLibrary.GetRus.RuDayOfWeek[item.DayOfWeek]
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.StartTime)
+                    @item.StartTime.TimeOfDay.ToString()
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.EndTime)
+                    @item.EndTime.TimeOfDay.ToString()
                 </td>
                 <td>
-                    <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+                    <a asp-action="Edit" asp-route-id="@item.ID">Изменить</a> |
+                    <a asp-action="Delete" asp-route-id="@item.ID">Удалить</a>
                 </td>
             </tr>
         }

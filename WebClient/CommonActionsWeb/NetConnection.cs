@@ -47,7 +47,7 @@ namespace CommonActions
             return null;
         }
 
-        public async Task<T> LoadObjectByPost<T>(string url, string content = "")
+        public async Task<T> LoadObjectByPost<T>(string url, string content = "", string token = "")
             where T : class
         {
             using (var client = new HttpClient())
@@ -58,6 +58,8 @@ namespace CommonActions
                     RequestUri = new Uri(BaseURL + url),
                     Content = new StringContent(content)
                 };
+                if (token.Length > 0)
+                    httpRequestMessage.Headers.Add("Token", token);
                 var result = await client.SendAsync(httpRequestMessage);
                 if (result.IsSuccessStatusCode)
                     return JsonConvert.DeserializeObject<T>(new StreamReader(await result.Content.ReadAsStreamAsync()).ReadToEnd());

@@ -34,6 +34,14 @@ namespace NerousNetworkDLL
 		file.close();
 	}
 
+	void NerousNetwork::closeInput(std::vector<int> indxs)
+	{
+		for (int i = 1; i < indxs.size(); i++)
+			indxs[i] -= i;
+		for (int i = 0; i < indxs.size(); i++)
+			inputNerons.erase(inputNerons.begin() + indxs[i]);
+	}
+
 	void NerousNetwork::calculate()
 	{
 		for (auto output : outputNerons)

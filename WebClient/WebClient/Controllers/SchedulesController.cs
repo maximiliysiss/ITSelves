@@ -10,6 +10,7 @@ using CommonActions;
 using System.Net.Http;
 using Newtonsoft.Json;
 using CommonActionsWeb;
+using Microsoft.AspNetCore.Http;
 
 namespace WebClient.Controllers
 {
@@ -22,7 +23,7 @@ namespace WebClient.Controllers
         {
             if (!this.IsAuth())
                 return RedirectToAction("Index", "Auth");
-            return View(await NetConnection.LoadObjectByGet<List<Schedule>>("/Schedules") ?? new List<Schedule>());
+            return View(await NetConnection.LoadObjectByGet<List<Schedule>>("/Schedules", token: HttpContext.Session.GetString("Token")) ?? new List<Schedule>());
         }
 
         // GET: Schedules/Details/5

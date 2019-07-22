@@ -1,7 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using CommonActionsWeb;
+using CommonLibrary;
+using CommonLibrary.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -67,6 +70,23 @@ namespace TaskAPI.Controllers
                 return NotFound();
             }
 
+            return NoContent();
+        }
+
+        [HttpPost]
+        [Route("sendTask")]
+        public async Task<ActionResult> sendTask([FromBody] AddTask addTask)
+        {
+            _context.Task.Add(new CommonLibrary.Models.Task
+            {
+                Category = (Category)addTask.Type,
+                Creator = this.GetUserByToken(Request.Headers["Token"]).ID,
+                Description = addTask.Desc,
+                Photos = new List<Photo> { new Photo { Image = Encoding.ASCII.GetBytes(addTask.Photo) } },
+                House = 1,
+                TaskStatus = CommonLibrary.TaskStatus.Create
+            });
+            await _context.SaveChangesAsync();
             return NoContent();
         }
 

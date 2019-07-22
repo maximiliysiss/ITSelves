@@ -21,9 +21,10 @@
 </head>
 <body>
     <div data-image="~/img/sidebar-5.jpg" style="position:absolute; width:100%; height:100%; display:flex; justify-content:center; align-items:center">
-        <form method="post" asp-action="Login" asp-controller="Auth">
+        <form style="border:2px solid lightgrey; padding: 50px" method="post" asp-action="Login" asp-controller="Auth">
             <div class="form-group">
-                <input placeholder="Enter key" class="form-control" style="width:200px; margin-bottom: 10px" id="key" name="key" />
+                <label class="col-form-label">Вход</label>
+                <input type="password" placeholder="Enter key" class="form-control" style="width:200px; margin-bottom: 10px" id="key" name="key" />
                 <input value="Login" class="btn btn-primary" style="width:200px" type="submit" />
             </div>
         </form>

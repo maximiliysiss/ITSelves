@@ -30,6 +30,7 @@ namespace NerousNetworkDLL
 		void load();
 		NerousNetworkDLL::Methods::IMethodNetwork * method;
 	public:
+		void closeInput(std::vector<int> indxs);
 		inline auto getInputs() const { return inputNerons; }
 		inline auto getOutputs() const { return outputNerons; }
 		inline auto getHiddens() const { return hiddenNerons; }

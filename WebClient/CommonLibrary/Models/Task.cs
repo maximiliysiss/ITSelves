@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
@@ -13,13 +14,15 @@ namespace CommonLibrary.Models
         /// </summary>
         public DateTime DateTime { get; set; } = DateTime.Now;
         public int Creator { get; set; }
+        [NotMapped]
+        public IFormFile PhotoStart {get;set;}
         public string Name { get; set; }
         [NotMapped]
         public string ShortName => Description?.Length > 45 ? Description.Substring(0, 45) : Description ?? string.Empty;
         /// <summary>
         ///  Статус
         /// </summary>
-        public TaskStatus? TaskStatus { get; set; }
+        public TaskStatus? TaskStatus { get; set; } = CommonLibrary.TaskStatus.Create;
         /// <summary>
         /// Описание
         /// </summary>
@@ -31,8 +34,8 @@ namespace CommonLibrary.Models
         /// <summary>
         /// Фотографии
         /// </summary>
-        virtual public List<Photo> Photos { get; set; }
-        virtual public List<Photo> PhotosResult { get; set; }
+        virtual public List<Photo> Photos { get; set; } = new List<Photo>();
+        virtual public List<Photo> PhotosResult { get; set; } = new List<Photo>();
         /// <summary>
         /// Дом
         /// </summary>

@@ -21,8 +21,14 @@ namespace WebClient.Controllers
             ViewBag.Worker = Worker = this.GetWorkerByToken(HttpContext.Session.GetString("Token"));
             HttpContext.Session.SetString("Role", Worker.Role);
             if (Worker.Role == "ROLE_OPERATOR")
-                return View("Operator");
+                return RedirectToAction("Index", "Tasks");
             return View("Worker");
+        }
+
+        [HttpGet]
+        public IActionResult Typography()
+        {
+            return View();
         }
     }
 }

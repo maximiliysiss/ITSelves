@@ -10,6 +10,8 @@ using CommonActions;
 using Newtonsoft.Json;
 using CommonActionsWeb;
 using Microsoft.AspNetCore.Http;
+using System.IO;
+using System.Text;
 
 namespace WebClient.Controllers
 {
@@ -58,16 +60,20 @@ namespace WebClient.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,DateTime,Name,TaskStatus,Description,Category,House,Worker,Rate,Comment")] CommonLibrary.Models.Task task)
+        public async Task<IActionResult> Create(CommonLibrary.Models.Task task)
         {
             if (!this.IsAuth())
                 return RedirectToAction("Index", "Auth");
-            if (ModelState.IsValid)
+            if (task.PhotoStart != null)
             {
-                await NetConnection.LoadObjectByPost<CommonLibrary.Models.Task>("/Tasks/Add", JsonConvert.SerializeObject(task));
-                return RedirectToAction(nameof(Index));
+                task.Photos.Add(new Photo { Image = Encoding.ASCII.GetBytes(new StreamReader(task.PhotoStart.OpenReadStream()).ReadToEnd()) });
             }
-            return View(task);
+            var adress = this.Request.Form["house"].ToString();
+            task.House = (await new NetConnection { BaseURL = Configuration.URLS["HCS"] }.LoadObjectByGet<List<House>>($"/Houses"))
+                .FirstOrDefault(x => x.ToString().Contains(adress)).ID;
+            await NetConnection.LoadObjectByPost<CommonLibrary.Models.Task>("/Tasks/Add", JsonConvert.SerializeObject(task),
+                HttpContext.Session.GetString("Token"));
+            return RedirectToAction(nameof(Index));
         }
 
         public async Task<IActionResult> Edit(int? id)
