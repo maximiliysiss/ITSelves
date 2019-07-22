@@ -1,0 +1,79 @@
+﻿@model IEnumerable<CommonLibrary.Models.Task>
+
+@{
+    Layout = "_Layout";
+}
+
+<p>
+    <a class="btn" asp-action="Create">Создать новую</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Дата исполнения
+            </th>
+            <th>
+                Наименование
+            </th>
+            <th>
+                Статус
+            </th>
+            <th>
+                Описание
+            </th>
+            <th>
+                Тип работ
+            </th>
+            <th>
+                Дом
+            </th>
+            <th>
+                Исполнитель
+            </th>
+            <th>
+                Рейтинг
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            var house = await new CommonActions.NetConnection { BaseURL = CommonActions.Configuration.URLS["HCS"] }
+                .LoadObjectByGet<CommonLibrary.Models.House>($"/Houses/{item.House}", token: Context.Session.GetString("Token"));
+            var worker = await new CommonActions.NetConnection { BaseURL = CommonActions.Configuration.URLS["Auth"] }
+                .LoadObjectByGet<CommonLibrary.Models.Worker>($"/worker/{item.Worker}", token: Context.Session.GetString("Token"));
+            <tr>
+                <td>
+                    @item.DateTime.ToShortDateString()
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @(item.TaskStatus != null ? CommonLibrary.GetRus.RuTaskStatus[item.TaskStatus.Value] : "Создано")
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ShortName)
+                </td>
+                <td>
+                    @CommonLibrary.GetRus.RuCategory[item.Category]
+                </td>
+                <td>
+                    @house.ToString()
+                </td>
+                <td>
+                    @worker.ToString()
+                </td>
+                <td>
+                    @CommonLibrary.GetRus.RuRate[item.Rate]
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.ID">Изменить</a> |
+                    <a asp-action="Delete" asp-route-id="@item.ID">Удалить</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

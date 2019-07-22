@@ -1,0 +1,51 @@
+﻿@model IEnumerable<CommonLibrary.Models.Schedule>
+
+@{
+    Layout = "_Layout";
+}
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Работник
+            </th>
+            <th>
+                День недели
+            </th>
+            <th>
+                Начало работы
+            </th>
+            <th>
+                Конец работы
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            var worker = await new CommonActions.NetConnection { BaseURL = CommonActions.Configuration.URLS["Auth"] }
+                .LoadObjectByGet<CommonLibrary.Models.Worker>($"/worker/{item.Worker}", token: Context.Session.GetString("Token"));
+            <tr>
+                <td>
+                    @worker.Name
+                </td>
+                <td>
+                    @CommonLibrary.GetRus.RuDayOfWeek[item.DayOfWeek]
+                </td>
+                <td>
+                    @item.StartTime.TimeOfDay.ToString()
+                </td>
+                <td>
+                    @item.EndTime.TimeOfDay.ToString()
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.ID">Изменить</a> |
+                    <a asp-action="Delete" asp-route-id="@item.ID">Удалить</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,136 @@
+﻿@model CommonLibrary.Models.Task
+
+@{
+    Layout = "_Layout";
+    List<CommonLibrary.Models.Worker> workers = ViewBag.Workers;
+    string userName = ViewBag.User;
+}
+
+
+<style>
+    .lineFull {
+        height: 40px;
+    }
+
+        .lineFull > td {
+            padding: 5px;
+            text-align: center;
+            width: 100px;
+        }
+
+    .bblock {
+        background-color: #7CFC44;
+        height: 20px;
+    }
+
+    .oblock {
+        background-color: lightgrey;
+        height: 20px;
+    }
+</style>
+
+<form asp-action="Create" enctype="multipart/form-data">
+
+    <div style="padding: 15px">
+        <table style="width:100%; border: 3px solid; border-radius: 20px; -moz-border-radius: 30px; -webkit-border-radius: 30px; border-color: #9978DB">
+            <tr class="lineFull">
+                <td>Создание</td>
+                <td>Модерация</td>
+                <td>В работе</td>
+                <td>Оценка</td>
+                <td>Завершена</td>
+            </tr>
+            <tr class="lineFull">
+                <td><div class="bblock"></div></td>
+                <td><div class="bblock"></div></td>
+                <td><div class="bblock"></div></td>
+                <td><div class="@(Model.TaskStatus >= CommonLibrary.TaskStatus.Mark ? "bblock" : "oblock"))"></div></td>
+                <td><div class="@(Model.TaskStatus >= CommonLibrary.TaskStatus.Confirmed ? "bblock" : "oblock"))"></div></td>
+            </tr>
+        </table>
+    </div>
+
+
+    @if (Model.TaskStatus == CommonLibrary.TaskStatus.InConsideration)
+    {
+        <div class="form-group">
+            <label asp-for="DateTime" class="control-label">Дата</label>
+            <input asp-for="DateTime" readonly="readonly" class="form-control" />
+        </div>
+    }
+    @if (Model.TaskStatus == null || Model.TaskStatus == CommonLibrary.TaskStatus.Create)
+    {
+        <div class="form-group">
+            <label asp-for="Photos" class="control-label">Фотографии</label>
+            @foreach (var photo in Model.Photos)
+            {
+                <img style="width:100px; height: 100px" src="data:image/png;base64,@(Convert.ToString(photo.Image))" />
+            }
+            <br><input id="PhotoStart" name="PhotoStart" type="file" />
+        </div>
+        <div class="form-group">
+            <label asp-for="Name" class="control-label">Название</label>
+            <input asp-for="Name" class="form-control" value="Уборка дома" />
+        </div>
+        <div class="form-group">
+            <label asp-for="Description" class="control-label">Описание</label>
+            <input asp-for="Description" class="form-control" value="Дворник убирает подъезд" />
+        </div>
+        <div class="form-group">
+            <label asp-for="Category" class="control-label">Тип</label>
+            <select asp-for="Category" asp-items="new SelectList(Enum.GetValues(typeof(CommonLibrary.Category))
+                    .Cast<CommonLibrary.Category>().Select(x=>CommonLibrary.GetRus.RuCategory[x]).ToList(),Enum.GetValues(typeof(CommonLibrary.Category)))" class="form-control"></select>
+        </div>
+        <div class="form-group">
+            <label asp-for="House" class="control-label">Строение</label>
+            <input id="House" name="House" class="form-control" value="д.3" />
+        </div>
+    }
+    @if (Model.TaskStatus == CommonLibrary.TaskStatus.InProgress)
+    {
+        <div class="form-group">
+            <label asp-for="Photos" class="control-label">Фотографии работы</label>
+            @foreach (var photo in Model.PhotosResult)
+            {
+                <img style="width:100px; height: 100px" src="data:image/png;base64,@(Convert.ToString(photo.Image))" />
+            }
+        </div>
+        <br><input type="file" />
+    }
+    @if (true)
+    {
+        <div class="form-group">
+            <label asp-for="Worker" class="control-label"></label>
+            <select asp-for="Worker" asp-items="new SelectList(workers.Select(x => x.Name), workers.Select(x => x.ID))" class="form-control"></select>
+        </div>
+    }
+    @if (Model.TaskStatus == CommonLibrary.TaskStatus.Mark)
+    {
+        <div class="form-group">
+            <label asp-for="Rate" class="control-label"></label>
+            <select asp-for="Rate" disabled asp-items="new SelectList(Enum.GetValues(typeof(CommonLibrary.Rate)))" class="form-control"></select>
+        </div>
+        <div class="form-group">
+            <label asp-for="Comment" class="control-label"></label>
+            <input asp-for="Comment" readonly="readonly" class="form-control" />
+        </div>
+    }
+    <div class="form-group" style="margin-top: 10px">
+        @switch (Model.TaskStatus)
+        {
+            case CommonLibrary.TaskStatus.Create:
+                <input type="submit" class="btn btn-primary" value="Создать задачу" />
+                break;
+            case CommonLibrary.TaskStatus.InConsideration:
+                <input type="submit" class="btn btn-primary" value="Выдать задачу" />
+                break;
+            case CommonLibrary.TaskStatus.InProgress:
+                <input type="submit" class="btn btn-primary" value="Завершить выполнение" />
+                break;
+            default:
+                <input type="submit" value="Подтвердить" class="btn btn-primary" />
+                <input type="submit" value="Отклонить" class="btn btn-primary" />
+                break;
+        }
+    </div>
+</form>
